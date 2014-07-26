@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="wrapper" data-dojo-type="app/zax" data-dojo-props="localStorage:'name'">
+    <div z-node="block1">
+        <input type="text" z-model-event="input" z-model="pixel" z-id="123"/>
+        <select z-node="select"  z-model-event="change" z-model="name">
+            <option value="hide">HIDE</option>
+            <option value="show">SHOW</option>
+        </select>
+    </div>
+    <div z-node="block2" style="display: inline-flex">
+        <div class="b-button" z-node="button" z-click="clicker">BUTTON</div>
+        <div class="b-button" z-node="button" z-click="test.addRndPerson">ADD PERSON</div>
+        <div class="b-button" z-node="button" z-click="test.getJson">GET JSON</div>
+    </div>
+    <div z-bind="ages"></div>
+    <div z-node="hideBlock" style="display: none" z-show="show" >
+        <input type="text" z-model-event="input" z-model="pixel" z-id="pix"/>
+        age<input type="text" z-model="ages" z-model-event="input" />
+        <div z-each="person" z-model="ages,start,count"  z-query='{age:~ages~},{start:~start~,count:~count~}' z-id="person">
+            <div class="v-wrapper">
+                <div z-show="pixel" z-id="~name~">~name~</div>
+                <div>~age~</div>
+            </div>
+        </div>
+        <div z-each="nav" z-id="navigation">
+            <div z-click="setStart" class="b-button" data-value="~value~">~value~</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js"></script>
+</body>
+</html>
