@@ -18,7 +18,7 @@ define([
             watcher: {},
             zEachTemplate: {},
             zStore: [],
-            actions: ['z-model','z-bind','z-show','z-enabled','z-class','z-view','z-each'],
+            actions: ['z-each','z-model','z-bind','z-show','z-enabled','z-class','z-view'],
             /**
              * Конструктор
              * @param options - опции\атрибуты

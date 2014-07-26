@@ -35,7 +35,7 @@ define([
                 /**
                  * Debug
                  */
-                console.log(node,value,this.store.data)
+                if(this.options.isDebug) console.log(node,value,this.store.data)
             },
             setWatcherEvent: function(node,watcherEvent,strModel){
                 var self = this;
@@ -59,7 +59,7 @@ define([
             zFunc:function(node,value,strModel,watcherEvent){
                 var zFunc = domAttr.get(node, 'z-func');
                 if(zFunc){
-                    lang.getObject(zFunc, false, this)(node,value,strModel,watcherEvent);
+                    lang.getObject(zFunc, false, this).call(this,node,value,strModel,watcherEvent);
                 }
             },
             zQuery:function(node,value,strModel,watcherEvent){

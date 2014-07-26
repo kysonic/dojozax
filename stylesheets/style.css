@@ -1,0 +1,96 @@
+*{
+    margin:0;
+    passding:0;
+    outline: none;
+    font-family: "Segoe UI";
+}
+h2{
+    margin: 5px 0px;
+    color: #689a79;
+}
+hr {
+    width: 200px;
+    border-style: dashed;
+}
+input {
+    width: auto;
+    height: 30px;
+}
+label{
+    color: #5f6161;
+}
+select {
+    width: auto;
+    height: 44px;
+}
+input,select {
+    font-family: "Impact";
+    font-size: 18px;
+    padding: 5px;
+}
+header {
+    width: 100%;
+    height: 50px;
+    background: #8ecca3;
+    font-weight: 100;
+}
+.b-header{
+    width: 960px;
+    margin: 0 auto;
+}
+.b-logo {
+    font-family: 'Segoe UI';
+    font-size: 35px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 50px;
+}
+#b-wrapper {
+    width: 960px;
+    margin: 20px auto;
+}
+.b-button-block {
+    margin: 20px 0px;
+}
+.b-button-block div {
+    display: inline;
+}
+.b-button {
+    font-size: 16px;
+    font-family: 'Impact';
+    font-weight: 100;
+    padding: 13px 10px;
+    background: #8ecca3;
+    color: #fff;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: background .3s ease-out;
+    line-height: 16px;
+    display: inline-block;
+}
+.b-button:hover {
+    background: #cc6065;
+    transition: background .6s ease-out;
+}
+.b-button:first-child {
+    margin-left: 0px;
+}
+#age-label {
+    margin-left: 34px;
+}
+#count-label {
+    margin-left: 146px;
+}
+.p-wrapper {
+    margin: 10px;
+}
+.p-wrapper span {
+    color: #5f6161;
+}
+.p-wrapper div {
+    display: inline-block;
+    font-weight: bold;
+}
+.b-selected {
+    background: #5f816d;
+}

@@ -3,33 +3,45 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="/dojozax/stylesheets/style.css"/>
 </head>
 <body>
-<div id="wrapper" data-dojo-type="app/zax" data-dojo-props="localStorage:'name'">
-    <div z-node="block1">
-        <input type="text" z-model-event="input" z-model="pixel" z-id="123"/>
+<header>
+    <div class="b-header">
+        <div class="b-logo">ZAX</div>
+    </div>
+</header>
+<div id="b-wrapper" data-dojo-type="app/zax" data-dojo-props="localStorage:'name',debug:false">
+    <h2>CONTROL PANEL</h2>
+    <div z-node="controlPanel">
+        <input type="text" z-model-event="input" z-model="password" z-id="out"/>
         <select z-node="select"  z-model-event="change" z-model="name">
             <option value="hide">HIDE</option>
             <option value="show">SHOW</option>
         </select>
     </div>
-    <div z-node="block2" style="display: inline-flex">
-        <div class="b-button" z-node="button" z-click="clicker">BUTTON</div>
-        <div class="b-button" z-node="button" z-click="test.addRndPerson">ADD PERSON</div>
-        <div class="b-button" z-node="button" z-click="test.getJson">GET JSON</div>
+    <div class="b-button-block" z-node="buttonPanel">
+        <div class="b-button" z-node="buttonCheckPass" z-click="check">CHECK</div>
+        <div class="b-button" z-node="buttonAddPerson" z-click="test.addRndPerson">ADD PERSON</div>
+        <div class="b-button" z-node="buttonGetJson" z-click="test.getJson">GET JSON</div>
     </div>
-    <div z-bind="ages"></div>
+    <label>BIND AGE: </label><div style="display: inline-block" z-bind="ages"></div>
     <div z-node="hideBlock" style="display: none" z-show="show" >
-        <input type="text" z-model-event="input" z-model="pixel" z-id="pix"/>
-        age<input type="text" z-model="ages" z-model-event="input" />
-        <div z-each="person" z-model="ages,start,count"  z-query='{age:~ages~},{start:~start~,count:~count~}' z-id="person">
-            <div class="v-wrapper">
-                <div z-show="pixel" z-id="~name~">~name~</div>
-                <div>~age~</div>
+        <h2>HIDE PANEL</h2>
+        <label>PASSWORD MODEL</label><label id="age-label">AGE</label><label id="count-label">COUNT</label><br><input type="text" z-model-event="input"  z-enabled="count" z-model="password" z-id="under"/>
+       <input type="text" z-model="ages" z-func="validator.isNumber" z-model-event="input" />
+        <input type="text" z-model="count" z-func="changeNav" z-model-event="input" />
+        <div z-each="person"  z-node="person" z-model="ages,start,count"  z-query='{age:~ages~},{start:~start~,count:~count~}' z-id="person">
+            <div class="p-wrapper">
+                <hr/>
+                <span>PERSON NAME: </span><div z-show="password" z-id="~name~">~name~</div><br/>
+                <span>PERSON AGE: </span><div>~age~</div><br/>
+                <span>PERSON STATUS: </span><div>~status~</div>
+                <hr/>
             </div>
         </div>
-        <div z-each="nav" z-id="navigation">
-            <div z-click="setStart" class="b-button" data-value="~value~">~value~</div>
+        <div z-each="nav" z-func="changeNav" z-id="navigation">
+            <div z-click="setStart" class="b-button ~value==0 ? 'b-selected' : ''~" data-value="~value~">~value~</div>
         </div>
     </div>
 </div>

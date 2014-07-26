@@ -13,7 +13,7 @@ define([
         return declare("zax.mv.actions.zEach", [zView], {
             zEach: function (node,value,strModel) {
                 var query = domAttr.get(node,'z-query');
-                var value = !query ? this.zStore[strModel].data : this.useQuery(query,strModel,node);
+                var value = node.currentValue = !query ? this.zStore[strModel].data : this.useQuery(query,strModel,node);
                 if(node.zEachTemplate ==undefined) node.zEachTemplate = lang.trim(node.innerHTML);
                 domConstruct.empty(node);
                 if(value instanceof Array){
@@ -64,6 +64,7 @@ define([
                 }catch(e){
 
                 }
+                node.queryValue = this.zStore[strModel].queryArray(qObject);
                 return this.zStore[strModel] ? this.zStore[strModel].queryArray(qObject,sObject) : [];
             }
         });
