@@ -18,7 +18,7 @@ define([
         return declare("zax.mv.actions.zModel", [zEach,zWidget], {
             zModel: function (node, value, model,notDependent) {
                 value = node.widget ? this.widgetSetValues(node.widget,value) : this.setValues(node, value); //:
-                model = domAttr.get(node,'z-model');
+                //model = domAttr.get(node,'z-model');
                 lang.setObject(model, value, this.store.data);
                 if(!notDependent) this.dependentAttribute(node, value, model);
                 if(this[this.store.data.zGlobal]) this[this.store.data.zGlobal].call(this,this.baseNode);

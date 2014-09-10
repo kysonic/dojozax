@@ -56,7 +56,7 @@ define([
             setStart: function (args, mv) {
                 var value = domAttr.get(this, 'data-value');
                 var count = mv.store.data.count;
-                mv.store.set('data.start', parseInt(value));
+                mv.store.set('data.start', parseInt(value*count));
                 query('div[z-each="nav"] .b-button').forEach(function(node){
                     domClass.remove(node,'b-selected');
                 });
