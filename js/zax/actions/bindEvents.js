@@ -6,19 +6,22 @@ define([
     "dojo/_base/array",
     "dojo/_base/lang"
 ],
-    function (declare, query, on, domAttr,array,lang) {
+    function (declare, query, on, domAttr, array, lang) {
         /**
          * Сущность bindEvents.
          */
         return declare("zax.mv.actions.bindEvents", null, {
-            events: ['z-click','z-change'],
+            events: ['z-click', 'z-change'],
             bindEvents: function () {
                 var self = this;
-                array.forEach(this.events,function(event){
-                    query('*['+event+']', self.baseNode).forEach(function (node) {
-                        on(node, event.split('-')[1], function () {
-                            lang.getObject(domAttr.get(node, event), false, self).call(this, arguments, self);
-                        });
+                array.forEach(this.events, function (event) {
+                    query('*[' + event + ']', self.baseNode).forEach(function (node) {
+                        if (!node.zEvent) node.zEvent = {};
+                        if (!node.zEvent[event]) {
+                            node.zEvent[event] = on(node, event.split('-')[1], function () {
+                                lang.getObject(domAttr.get(node, event), false, self).call(this, arguments, self);
+                            });
+                        }
                     });
                 });
             }

@@ -30,22 +30,23 @@
         <div class="b-button" z-node="buttonGetJson" z-click="test.getJson">GET JSON</div>
     </div>
     <label>BIND AGE: </label><div style="display: inline-block" z-bind="ages"></div>
-    <div z-node="hideBlock" style="display: none" z-show="show" >
+    <div z-node="hideBlock" z-show="show" >
         <h2>HIDE PANEL</h2>
-        <label>PASSWORD MODEL</label><label id="age-label">AGE</label><label id="count-label">COUNT</label><br><input type="text" z-model-event="input"  z-enabled="count" z-model="password" z-id="under"/>
+        <label>PASSWORD MODEL</label><label id="age-label">AGE</label><label id="count-label">COUNT</label><br>
+        <input type="text" z-model-event="input"  z-enabled="count" z-model="password" z-id="under"/>
        <input type="text" z-model="ages" z-func="validator.isNumber" z-model-event="input" />
         <input type="text" z-model="count" z-func="changeNav" z-model-event="input" />
-        <div z-each="person"  z-node="person" z-model="ages,start,count"  z-query='{age:~ages~},{start:~start~,count:~count~}' z-id="person">
+        <div z-each="person"  z-node="person" z-model="start,ages,count"  z-query='{age:`ages`},{start:`start`,count:`count`}' z-id="person">
             <div class="p-wrapper">
                 <hr/>
-                <span>PERSON NAME: </span><div z-show="password" z-id="~name~">~name~</div><br/>
-                <span>PERSON AGE: </span><div>~age~</div><br/>
-                <span>PERSON STATUS: </span><div>~status~</div>
+                <span>PERSON NAME: </span><div z-show="password" z-id="`name`">`name`</div><br/>
+                <span>PERSON AGE: </span><div>`age`</div><br/>
+                <span>PERSON STATUS: </span><div>`status`</div>
                 <hr/>
             </div>
         </div>
         <div z-each="nav" z-func="changeNav" z-id="navigation">
-            <div z-click="setStart" class="b-button ~value==0 ? 'b-selected' : ''~" data-value="~value~">~value~</div>
+            <div z-click="setStart" class="b-button" data-value="`value`">`value`</div>
         </div>
     </div>
 </div>

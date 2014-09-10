@@ -12,35 +12,30 @@ define([
          */
         return declare("zax.mv.actions.zEach", [zView], {
             zEach: function (node,value,strModel) {
+                var self = this;
                 var query = domAttr.get(node,'z-query');
                 var value = node.currentValue = !query ? this.zStore[strModel].data : this.useQuery(query,strModel,node);
                 if(node.zEachTemplate ==undefined) node.zEachTemplate = lang.trim(node.innerHTML);
                 domConstruct.empty(node);
                 if(value instanceof Array){
-                    var keys = this.getObjectKeys(value[0]);
+                    var itemHtml = node.zEachTemplate;
+                    var modelArray = itemHtml.match(/`(.*?)`/g);
                     array.forEach(value,function(item){
-                        var itemHtml = node.zEachTemplate;
-                        if(keys){
-                            array.forEach(keys,function(key){
-                                var regexp = new RegExp('\\~('+key+'.*?)\\~','ig');
-                                itemHtml = itemHtml.replace(regexp,function(){
-                                    return eval(arguments[1].replace(key,'item.'+key));
-                                });
+                        itemHtml = node.zEachTemplate;
+                        array.forEach(modelArray,function(expression){
+                            var model = expression.replace(/`/g,'');
+                            var regexp = new RegExp('\\`('+model+'.*?)\\`','g');
+                            itemHtml = itemHtml.replace(regexp,function(){
+                                var exp = model=='value' ? 'item' : arguments[1].replace(model,'item.'+model);
+                                return eval(exp);
                             });
-                        }else {
-                            var itemHtml = node.zEachTemplate;
-                            itemHtml = itemHtml.replace(/~(value.*?)~/ig,function(){
-                                return eval(arguments[1].replace('value','item'));
-                            });
-                        }
-                        node.innerHTML+=lang.trim(itemHtml);
+                        });
+                        domConstruct.place(lang.trim(itemHtml),node,'last');
                     });
                     /**
                      * Parse attrs in new Nodes
                      */
-                    this.baseNode = node;
-                    this.initialize(true);
-                    this.baseNode = this.domNode;
+                    this.parseView(node);
                 }
             },
             getObjectKeys: function(o){
@@ -51,8 +46,8 @@ define([
             useQuery: function(query,strModel,node){
                 var self = this;
                 var tmp = '';
-                query = query.replace(/\~(.*?)\~/g,function(){
-                    tmp = eval(arguments[1].replace(arguments[1],'self.model.'+arguments[1]));
+                query = query.replace(/\`(.*?)\`/g,function(){
+                    tmp = eval(arguments[1].replace(arguments[1],'self.store.data.'+arguments[1]));
                     return tmp;
                 });
                 var splitter = query.split('},{');
@@ -62,7 +57,8 @@ define([
                     var qObject = eval('('+qQuery+')');
                     var sObject = sQuery ? eval('('+sQuery+')') :{};
                 }catch(e){
-
+                    console.log('Query is wrong!');
+                    return this.zStore[strModel].queryArray({},{});
                 }
                 node.queryValue = this.zStore[strModel].queryArray(qObject);
                 return this.zStore[strModel] ? this.zStore[strModel].queryArray(qObject,sObject) : [];

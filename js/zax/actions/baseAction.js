@@ -2,6 +2,7 @@ define([
     "dojo/_base/declare",
     "dojo/query",
     "dojo/on",
+    "dojo/date/locale",
     "dojo/request/xhr",
     "dojo/dom-attr",
     "dojo/dom-construct",
@@ -16,7 +17,7 @@ define([
     "zax/actions/zClass",
     "zax/actions/zEach"
 ],
-    function (declare, query, on, xhr, domAttr, domConstruct, lang, array, Memory, zBind, zModel, zShow, zEnabled, zView, zClass, zEach) {
+    function (declare, query, on,locale,xhr, domAttr, domConstruct, lang, array, Memory, zBind, zModel, zShow, zEnabled, zView, zClass, zEach) {
         /**
          * Base action entity.
          */
@@ -24,30 +25,46 @@ define([
             baseAction: function (attr) {
                 var self = this;
                 query('*[' + attr + ']', self.baseNode).forEach(function (node) {
-                    var own = this;
-                    /**
-                     * Get all strings and variables
-                     */
-                    var strModels = domAttr.get(node, attr).split(',');
-                    array.forEach(strModels, function (strModel) {
-                        var id = domAttr.get(node, 'z-id');
-                        id = id ? id : 'notUnique';
-                        var watcherEvent = domAttr.get(node, 'z-model-event');
-                        watcherEvent = watcherEvent ? watcherEvent : '';
-                        var watcherName = watcherEvent ? attr + '-' + strModel + '-' + id + '-' + watcherEvent : attr + '-' + strModel + '-' + id;
-                        var value = lang.getObject(strModel, false, self.store.data);
-                        if (value instanceof Array || value instanceof Object) self.setMemory(strModel, value);
-                        /**
-                         * Unwatch if this watcher exist
-                         */
-                        if (self.watcher[watcherName] !== undefined) self.watcher[watcherName].unwatch();
-                        var actionName = self.convertToCamel(attr);
-                        self.watcher[watcherName] = self.store.watch('data.' + strModel, function (name, oldValue, value) {
-                            self[actionName](node, value, strModel, watcherEvent, watcherName);
+                    var models = domAttr.get(node, attr);
+                    var actionName = self.convertToCamel(attr);
+                    var watcherEvent = domAttr.get(node, 'z-model-event');
+                    var id = domAttr.get(node, 'z-id') || 'default';
+                    array.forEach(models.split(','), function (expression) {
+                        var models = expression.match(/(\s|[!<>=\+\-\*\/\%\:]|)([a-zA-Z0-9\.])+/g);
+                        array.forEach(models,function(model){
+                            model = model.replace(/(\s|[!<>=\+\-\*\/\%\:])/g,'');
+                            var executorName = model + '-' + actionName + '-' + id;
+                            self.executors[model] = self.executors[model] || {};
+                            self.executors[model][executorName] = {node: node, action: actionName,expression:expression};
+                            var value = /~/g.test(expression) ? self.execute.call(self,expression) : lang.getObject(model, false, self.store.data); //
+                            if(lang.getObject(model, false, self.store.data) instanceof Array && !self.zStore[model]) self.setMemory(model,lang.getObject(model, false, self.store.data));
+                            if(actionName=='zModel') lang.setObject(model, value, self.store.data);
+                            self[actionName].call(self, node, value, model,domAttr.get(node, 'z-not-first'));
+                            if (watcherEvent) self.setWatcherEvent(node, model, watcherEvent);
                         });
-                        self[actionName](node, value, strModel, watcherEvent, watcherName);
                     });
                 });
+
+            },
+            setWatchers: function () {
+                var self = this;
+                for (var key in this.executors) {
+                    if (self.watcher[key] == undefined) {
+                        self.watcher[key] = self.store.watch('data.' + key, function (prop, action, value, oldValue) {
+                            if (oldValue != value) {
+                                for(var k in self.executors[prop.replace('data.', '')]){
+                                    var item = self.executors[prop.replace('data.', '')][k];
+                                    //console.log(item.node,item.action,item.expression)
+                                    var replace = '$1"'+value+'"';
+                                    var regexp = new RegExp('(\\s|[!<>=\\+\\-\\*\\/\\%\\:]|)('+ prop.replace('data.', '')+')','g');
+                                    value = /~/g.test(item.expression) ?
+                                        self.execute.call(self,item.expression.replace(regexp,replace)) : value;
+                                    self[item.action].call(self, item.node, value, prop.replace('data.', ''));
+                                }
+                            }
+                        });
+                    }
+                }
             },
             setMemory: function (strModel, value) {
                 var own = this;
@@ -59,21 +76,84 @@ define([
                         });
                         return queryArray;
                     },
-                    getJson: function (target) {
+                    getJson: function (target,localStorageName,callback) {
                         var self = this;
-                        this.deffered = xhr(target, {
-                            sync: false,
-                            method: 'GET',
-                            handleAs: 'json'
-                        }).then(function (data) {
-                                self.data = data;
-                                own.store.set('data.'+strModel,self.data);
-                            },
-                            function (err) {
-                                console.error(err);
-                            });
+                        if(localStorage && localStorage.getItem(localStorageName)) {
+                            var data = JSON.parse(localStorage.getItem(localStorageName))[target];
+                            var date = locale.parse(JSON.parse(localStorage.getItem(localStorageName))[target+'date'], {datePattern: 'yyyy-MM-dd HH:mm:ss', selector: "date"});
+                            var currentDelta = new Date()-date;
+                            console.log('This value will be updated through '+ ((360*60*60-currentDelta)/60/60/360).toFixed(5) + ' hours');
+                            if(currentDelta>360*60*60)  data = null;
+                        }
+                        if(data) {
+                            self.data = data;
+                            own.store.set('data.' + strModel, self.data);
+                            if(callback) callback(data);
+                        }else {
+                            this.deffered = xhr(target, {
+                                sync: false,
+                                method: 'GET',
+                                handleAs: 'json'
+                            }).then(function (data) {
+                                    if(localStorage && localStorageName) {
+                                        var localData = localStorage.getItem(localStorageName) ? JSON.parse(localStorage.getItem(localStorageName)) : {};
+                                        localData[target] = data;
+                                        localData[target+'date'] = locale.format(new Date(), {datePattern: "yyyy-MM-dd HH:mm:ss", selector: "date"});
+                                        localStorage.setItem(localStorageName, JSON.stringify(localData));
+                                    }
+                                    self.data = data;
+                                    own.store.set('data.' + strModel, self.data);
+                                    if(callback) callback(data);
+                                },
+                                function (err) {
+                                    console.error(err);
+                                });
+                        }
+                    },
+                    putData: function(data){
+                        this.put(data);
+                        own.store.set('data.' + strModel, this.data);
+                    },
+                    removeData: function(id){
+                        this.remove(id);
+                        own.store.set('data.' + strModel, this.data);
                     }
                 });
+            },
+            execute: function (strModel) {
+                var result = '';
+                var model = strModel.replace(/~/g, '').replace(/\\/g,',');
+                var self = this;
+                with (this.store.data) {
+                    try {
+                        result = eval(model);
+                    }
+                    catch(e){
+                        result = '';
+                    }
+                }
+                return result;
+            },
+            sortModel: function(wheare,nameOfPropertyArray){
+                var sortModel = {};
+                var self = this;
+                var data = lang.getObject(wheare,false,self.store.data);
+                if(data instanceof Array){
+                    sortModel=[];
+                    array.forEach(data,function(item){
+                        var tmpItem = {};
+                        array.forEach(nameOfPropertyArray,function(property){
+                            lang.setObject(property, lang.getObject(property,false,item), tmpItem);
+                        });
+                        sortModel.push(tmpItem);
+                    });
+                }else {
+                    array.forEach(nameOfPropertyArray,function(property){
+                        lang.setObject(property, lang.getObject(property,false,lang.getObject(wheare,false,self.store.data)), sortModel);
+                    });
+                }
+
+                return sortModel;
             }
         });
     }

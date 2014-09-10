@@ -12,10 +12,10 @@ define([
                 var cls = domAttr.get(node, 'z-cls');
                 if (cls) {
                     if (value) {
-                        domClass.remove(node, cls);
+                        domClass.add(node, cls);
                     }
                     else {
-                        domClass.add(node, cls);
+                        domClass.remove(node, cls);
                     }
                 }
             }

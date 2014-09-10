@@ -22,6 +22,7 @@ define([
                 ],
                 ages: 22,
                 count: 2,
+                start: 0,
                 nav: [0, 1, 2, 3, 4]
             },
             constructor: function (options, node) {
@@ -55,7 +56,7 @@ define([
             setStart: function (args, mv) {
                 var value = domAttr.get(this, 'data-value');
                 var count = mv.store.data.count;
-                mv.store.set('data.start', value*count);
+                mv.store.set('data.start', parseInt(value));
                 query('div[z-each="nav"] .b-button').forEach(function(node){
                     domClass.remove(node,'b-selected');
                 });
