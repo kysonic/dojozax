@@ -109,6 +109,46 @@ Bind data of model variables to static element.
 ```
 <input type="text" z-model="data" z-model-event="input" /><div z-bind="data"></div>
 ```
+##z-func 
+Function execute when connect node model is changed. This attribute can use like a filter.
+
+**HTML**
+```
+<input type="text" z-model="data" z-model-event="input" z-func="filter" z-click="clickFunc" />
+```
+
+**JS**
+```
+return declare("tel.test.zax", [mv], {
+            options: null,
+            model: {
+                data:'someData'
+            },
+            filter: function(node,value){
+                console.log(this); // current class.
+                this.store.set('data.data','newData');
+                domClass.add(node,'error');
+            }
+        });
+```
+##z-show 
+
+Show/hide attribute
+
+**HTML**
+```
+<input type="text" z-model="data" z-model-event="input" z-func="filter" z-click="clickFunc" /><div z-show="data" z-bind="data"></div>
+```
+
+##z-enabled 
+Enable\disable element
+**HTML**
+```
+<input type="text" z-model="data" z-model-event="input" z-enabled="data" />
+```
+##z-each
+Repeat construction on nested node of current. Bind data in format [{},{},{}] or ['1','2','3']. Automaticly create a Store event in mv.zStore dojo Memory object. with name of current model. In element z-each="presons" we have a mv.zStore['persons'] Memory object. In this
+
 ##Bind events.
 
 Currently dojo zax supports event: z-click,z-change,z-mouseover,z-mouseout,z-doubleclick. z-event define callback to event in class methods. 
@@ -140,34 +180,4 @@ return declare("tel.test.zax", [mv], {
                 // In dojo zax use dojo Stateful with setter methods... Object Observer dont supports ie8
             }
         });
-```
-##z-func 
-Function execute when connect node model is changed. This attribute can use like a filter.
-
-**HTML**
-```
-<input type="text" z-model="data" z-model-event="input" z-func="filter" z-click="clickFunc" />
-```
-
-**JS**
-```
-return declare("tel.test.zax", [mv], {
-            options: null,
-            model: {
-                data:'someData'
-            },
-            filter: function(node,value){
-                console.log(this); // current class.
-                this.store.set('data.data','newData');
-                domClass.add(node,'error');
-            }
-        });
-```
-##z-show 
-
-Show/hide attribute
-
-**HTML**
-```
-<input type="text" z-model="data" z-model-event="input" z-func="filter" z-click="clickFunc" /><div z-show="data" z-bind="data"></div>
 ```
