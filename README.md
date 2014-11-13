@@ -95,6 +95,7 @@ return declare("tel.test.zax", [mv], {
 ##z-model-event 
 
 Work with z-model. Define a event for model change. z-model-event may be one of this list: input, change, keydown, keyup, mouseover, mouseleave, click. (all of dojo on available events)
+
 **HTML**
 ```
 <input type="text" z-model="data" z-model-event="input" />
@@ -103,7 +104,31 @@ Work with z-model. Define a event for model change. z-model-event may be one of 
 ##z-bind
 
 Bind data of model variables to static element. 
+
 **HTML**
 ```
 <input type="text" z-model="data" z-model-event="input" /><div z-bind="data"></div>
+```
+##Bind events.
+
+Currently dojo zax supports event: z-click,z-change,z-mouseover,z-mouseout,z-doubleclick. z-event define callback to event in class methods. 
+**HTML**
+```
+<input type="text" z-model="data" z-model-event="input" z-click="clickFunc" />
+```
+**JS**
+```
+return declare("tel.test.zax", [mv], {
+            options: null,
+            model: {
+                data:'someData'
+            },
+            clickFunc: function(args,mv){
+                console.log(this); // Current node
+                console.log(args); // arguments [e - event,...]
+                console.log(mv); // Link of current associate class
+                console.log(mv.store.data.data); // current model data keep in dojo Memory. He calls store. store.data = model
+                mv.store.set('data.data','newValue'); // setter
+            }
+        });
 ```
