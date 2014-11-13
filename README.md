@@ -112,6 +112,7 @@ Bind data of model variables to static element.
 ##Bind events.
 
 Currently dojo zax supports event: z-click,z-change,z-mouseover,z-mouseout,z-doubleclick. z-event define callback to event in class methods. 
+
 **HTML**
 ```
 <input type="text" z-model="data" z-model-event="input" z-click="clickFunc" />
