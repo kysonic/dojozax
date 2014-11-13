@@ -129,6 +129,14 @@ return declare("tel.test.zax", [mv], {
                 console.log(mv); // Link of current associate class
                 console.log(mv.store.data.data); // current model data keep in dojo Memory. He calls store. store.data = model
                 mv.store.set('data.data','newValue'); // setter
+                onsole.log(mv.model.data); // getter with model
+                console.log(mv.store.data.data); //getter with store
+                mv.model.data = 'Another value'; // Don't work
+                //But he change model and store
+                console.log(mv.model.data);
+                console.log(mv.store.data.data);
+                // Not changed dom element value
+                // In dojo zax use dojo Stateful width setter methods... Object Observer dont supports ie8
             }
         });
 ```
