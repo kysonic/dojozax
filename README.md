@@ -141,3 +141,33 @@ return declare("tel.test.zax", [mv], {
             }
         });
 ```
+##z-func 
+Function execute when connect node model is changed. This attribute can use like a filter.
+
+**HTML**
+```
+<input type="text" z-model="data" z-model-event="input" z-func="filter" z-click="clickFunc" />
+```
+
+**JS**
+```
+return declare("tel.test.zax", [mv], {
+            options: null,
+            model: {
+                data:'someData'
+            },
+            filter: function(node,value){
+                console.log(this); // current class.
+                this.store.set('data.data','newData');
+                domClass.add(node,'error');
+            }
+        });
+```
+##z-show 
+
+Show/hide attribute
+
+**HTML**
+```
+<input type="text" z-model="data" z-model-event="input" z-func="filter" z-click="clickFunc" /><div z-show="data" z-bind="data"></div>
+```
