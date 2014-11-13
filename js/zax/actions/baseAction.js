@@ -29,18 +29,20 @@ define([
                     var actionName = self.convertToCamel(attr);
                     var watcherEvent = domAttr.get(node, 'z-model-event');
                     var id = domAttr.get(node, 'z-id') || 'default';
-                    array.forEach(models.split(','), function (expression) {
-                        var models = expression.match(/(\s|[!<>=\+\-\*\/\%\:]|)([a-zA-Z0-9\.])+/g);
+                    array.forEach(models.split(' | '), function (expression) {
+                        var models = expression.match(/(\s|[!<>=\+\-\*?\/\%\:]|)([a-zA-Z0-9\.])+/g);
                         array.forEach(models,function(model){
                             model = model.replace(/(\s|[!<>=\+\-\*\/\%\:])/g,'');
                             var executorName = model + '-' + actionName + '-' + id;
                             self.executors[model] = self.executors[model] || {};
                             self.executors[model][executorName] = {node: node, action: actionName,expression:expression};
                             var value = /~/g.test(expression) ? self.execute.call(self,expression) : lang.getObject(model, false, self.store.data); //
-                            if(lang.getObject(model, false, self.store.data) instanceof Array && !self.zStore[model]) self.setMemory(model,lang.getObject(model, false, self.store.data));
+                            var modelData = lang.getObject(model, false, self.store.data);
+                            if(!modelData && self.options.isDebug) console.debug('Your model has no instance >>> '+modelData);
+                            if(modelData && modelData instanceof Array && !self.zStore[model]) self.setMemory(model,lang.getObject(model, false, self.store.data));
                             if(actionName=='zModel') lang.setObject(model, value, self.store.data);
                             self[actionName].call(self, node, value, model,domAttr.get(node, 'z-not-first'));
-                            if (watcherEvent) self.setWatcherEvent(node, model, watcherEvent);
+                            if (watcherEvent && actionName!='zEach') self.setWatcherEvent(node, model, watcherEvent);
                         });
                     });
                 });
@@ -54,7 +56,6 @@ define([
                             if (oldValue != value) {
                                 for(var k in self.executors[prop.replace('data.', '')]){
                                     var item = self.executors[prop.replace('data.', '')][k];
-                                    //console.log(item.node,item.action,item.expression)
                                     var replace = '$1"'+value+'"';
                                     var regexp = new RegExp('(\\s|[!<>=\\+\\-\\*\\/\\%\\:]|)('+ prop.replace('data.', '')+')','g');
                                     value = /~/g.test(item.expression) ?
@@ -68,6 +69,16 @@ define([
             },
             setMemory: function (strModel, value) {
                 var own = this;
+                var put  = Memory.prototype.put;
+                var remove  = Memory.prototype.remove;
+                Memory.prototype.put = function(){
+                    put.apply(this,arguments);
+                    own.store.set('data.' + strModel, this.data);
+                }
+                Memory.prototype.remove = function(){
+                    remove.apply(this,arguments);
+                    own.store.set('data.' + strModel, this.data);
+                }
                 this.zStore[strModel] = new Memory({data: value,
                     queryArray: function (query, sort) {
                         var queryArray = [];
@@ -109,14 +120,6 @@ define([
                                     console.error(err);
                                 });
                         }
-                    },
-                    putData: function(data){
-                        this.put(data);
-                        own.store.set('data.' + strModel, this.data);
-                    },
-                    removeData: function(id){
-                        this.remove(id);
-                        own.store.set('data.' + strModel, this.data);
                     }
                 });
             },
@@ -152,8 +155,26 @@ define([
                         lang.setObject(property, lang.getObject(property,false,lang.getObject(wheare,false,self.store.data)), sortModel);
                     });
                 }
-
                 return sortModel;
+            },
+            reset: function(data){
+                var self = this;
+                array.forEach(this.changeState,function(key){
+                    var value = lang.getObject(key,false,data);
+                    if(self.options.isDebug) console.log('%s has been restored with value %s',key,value);
+                    self.store.set('data.'+key,value);
+                });
+                self.store.data = declare.safeMixin(self.store.data,data);
+            },
+            setModelData: function(data){
+                var self = this;
+                for(var key in data){
+                    if(self.options.isDebug) console.log('%s has been set %s',key,value);
+                    self.store.set('data.'+key,data[key]);
+                }
+            },
+            addState: function(state){
+                if(!this.inArray(this.changeState,state)) this.changeState.push(state);
             }
         });
     }

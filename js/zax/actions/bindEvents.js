@@ -11,7 +11,7 @@ define([
          * Сущность bindEvents.
          */
         return declare("zax.mv.actions.bindEvents", null, {
-            events: ['z-click', 'z-change'],
+            events: ['z-click', 'z-change','z-mouseover','z-mouseleave','z-dblclick'],
             bindEvents: function () {
                 var self = this;
                 array.forEach(this.events, function (event) {

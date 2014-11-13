@@ -23,7 +23,7 @@ define([
                 ages: 22,
                 count: 2,
                 start: 0,
-                nav: [0, 1, 2, 3, 4]
+                nav: [{value:0},{value:1},{value:2}]
             },
             constructor: function (options, node) {
                 /*Declare*/
@@ -37,8 +37,6 @@ define([
                 addRndPerson: function (args, mv) {
                     mv.zStore['person'].put({name: mv.utils.randomString(5), age: 22, status:"rnd"});
                     mv.store.set('data.person', mv.zStore['person'].data);
-                    mv.zStore['nav'].data.push(mv.zStore['nav'].data.length);
-                    mv.store.set('data.nav', mv.zStore['nav'].data);
                     mv.store.set('data.start',0);
                 },
                 getJson: function (args, mv) {
@@ -54,12 +52,12 @@ define([
                 }
             },
             setStart: function (args, mv) {
+                query('.b-button').forEach(function(item){
+                    domClass.remove(item,'b-selected');
+                });
                 var value = domAttr.get(this, 'data-value');
                 var count = mv.store.data.count;
                 mv.store.set('data.start', parseInt(value*count));
-                query('div[z-each="nav"] .b-button').forEach(function(node){
-                    domClass.remove(node,'b-selected');
-                });
                 domClass.add(this,'b-selected');
             },
             validator:{
@@ -69,13 +67,10 @@ define([
             },
             changeNav: function(node,value){
                 if(value){
-                    var arr = [];
-                    var top = Math.round(this.nodes.person.queryValue.length/value);
-                    for(var i=0;i<top;i++){
-                        arr.push(i);
-                    }
-                    this.zStore['nav'].data = arr;
-                    this.store.set('data.nav', arr);
+                    var count = Math.round(this.zStore['person'].queryArray({age:this.model.ages}).length/value);
+                    var array = [];
+                    for(var i=0;i<count;i++) array.push({value:i});
+                    this.store.set('data.nav',array);
                 }
             }
         });

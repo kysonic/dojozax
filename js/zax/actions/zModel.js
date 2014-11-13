@@ -7,22 +7,24 @@ define([
     "dojo/dom-construct",
     "dojo/_base/lang",
     "dojo/has",
-    "dojo/has",
     "zax/actions/zEach",
-    "zax/actions/zWidget"
+    "zax/actions/zWidget",
+    "zax/utils/utils"
 ],
-    function (declare, query, on, array, domAttr, domConstruct, lang, has, zEach,zWidget) {
+    function (declare, query, on, array, domAttr, domConstruct, lang, has, zEach,zWidget,Utils) {
         /**
          * z-model attr Entity.
          */
         return declare("zax.mv.actions.zModel", [zEach,zWidget], {
-            zModel: function (node, value, model,notDependent) {
+            constructor: function(){
+                this.Utils = new Utils();
+            },
+            zModel: function (node, value, model, notDependent) {
                 value = node.widget ? this.widgetSetValues(node.widget,value) : this.setValues(node, value); //:
-                //model = domAttr.get(node,'z-model');
                 lang.setObject(model, value, this.store.data);
                 if(!notDependent) this.dependentAttribute(node, value, model);
                 if(this[this.store.data.zGlobal]) this[this.store.data.zGlobal].call(this,this.baseNode);
-                if (this.options.isDebug) console.log(node, value, this.store.data)
+                if (this.options.isDebug) console.log(node, value, this.store.data);
             },
             setWatcherEvent: function (node, strModel, watcherEvent) {
                 var self = this;
@@ -33,6 +35,7 @@ define([
                     node.callback = function (event) {
                         var value = node.type == 'checkbox' ? this.checked : this.value;
                         self.store.set('data.' + strModel, value);
+                        if(!self.Utils.inArray(self.changeState,strModel)) self.changeState.push(strModel);
                     };
                     domAttr.set(node,'z-have-model-event',watcherEvent);
                     node[watcherEvent] = on(node, watcherEvent, node.callback);
@@ -46,7 +49,9 @@ define([
                         if (node.value) value = node.value;
                     }
                     if (domAttr.get(node, 'type') == 'text') node.value = value;
-                    if (domAttr.get(node, 'type') == 'radio') node.checked = node.value == value;
+                    if (domAttr.get(node, 'type') == 'radio') {
+                        node.checked = node.value == value;
+                    }
                     if (domAttr.get(node, 'type') == 'checkbox') node.checked = value;
                     return value;
                 }

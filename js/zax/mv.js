@@ -15,15 +15,18 @@ define([
         /**
          * Сущность mv.
          */
-        return declare("zax.mv.mv", [baseAction,parseNodes,zGlobal,zWidget,zCache,setStore,operand,bindEvents], {
+        return declare("zax.mv", [baseAction,parseNodes,zGlobal,zWidget,zCache,setStore,operand,bindEvents], {
             options: null,
             nodes: [],
+            widgets: {},
             baseNode: null,
             watcher: {},
             zEachTemplate: {},
             zStore: [],
             actions: ['z-each','z-model','z-bind','z-show','z-enabled','z-class','z-view'],
             executors: {},
+            changeState: [],
+            specialSymbols: /([()!<>=\+\-\?*\/\%\:])/g,
             /**
              * Конструктор
              * @param options - опции\атрибуты
@@ -46,6 +49,7 @@ define([
                 this.zWidget();
                 this.setActions();
                 this.setWatchers();
+
             },
             setActions: function(){
                 var self = this;

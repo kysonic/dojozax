@@ -1,15 +1,17 @@
 define([
     "dojo/_base/declare",
     "dojo/_base/lang",
+    "dojo/date/locale",
     "dojo/_base/array",
     "dojo/on",
     "dojo/query",
     "dojo/parser",
     "dojo/dom-attr",
     "dojo/dom-class",
-    "dojo/dom-construct"
+    "dojo/dom-construct",
+    "zax/utils/utils"
 ],
-    function (declare, lang, array, on, query, parser, domAttr, domClass, domConstruct) {
+    function (declare, lang,locale, array, on, query, parser, domAttr, domClass, domConstruct,Utils) {
         /**
          * Сущность zWidget.
          */
@@ -18,22 +20,29 @@ define([
              * Конструктор
              */
             constructor: function () {
+                this.Utils = new Utils();
             },
             zWidget: function () {
                 var self = this;
                 query('*[z-widget]', this.baseNode).forEach(function (node) {
                     domAttr.set(node, 'data-dojo-type', domAttr.get(node, 'z-widget'));
-                    domAttr.set(node, 'data-dojo-props', 'id:"' + Utils.randomString(5) + '"');
+                    //domAttr.set(node, 'data-dojo-id', 'id:"' + Utils.randomString(5) + '"');
                     var container = domConstruct.create('div', {className: 'b-widgets'}, node, 'before');
                     domConstruct.place(node, container, 'first');
                     domClass.add(node, 'b-not-visible');
                     parser.parse(node.parentNode).then(function (widgets) {
                         widgets.forEach(function (widget) {
                             node.widget = widget;
+                            var zModel =  domAttr.get(node, 'z-model');
+                            var widgetName = (domAttr.get(node,'z-name') ? domAttr.get(node,'z-name') : zModel);
+                            self.widgets[widgetName]=widget;
                             self.setAllNodeAttrs(widget, node);
                             if (domAttr.get(node, 'z-widget-on-load')) lang.getObject(domAttr.get(node, 'z-widget-on-load'), false, self).call(self, widget, node);
                             widget[domAttr.get(node, 'z-model-event')] = on(widget, widget['z-model-event'], function (v) {
-                                self.store.set('data.' + domAttr.get(node, 'z-model'), widget.get('value'));
+                                var value = widget.get('value');
+                                if(value instanceof Date) value = 'T'+locale.format(value, {datePattern: "HH:mm:ss", selector: "date"});
+                                self.store.set('data.' + zModel, value);
+                                if(!self.Utils.inArray(self.changeState,zModel)) self.changeState.push(zModel);
                             });
                             domClass.remove(widget.domNode, 'b-not-visible');
                             domClass.remove(container, 'b-widgets');
@@ -47,7 +56,7 @@ define([
                 if (widget.declaredClass == "dijit.form.Select") {
                     this.setSelectValue(widget, value);
                 } else {
-                    widget.set('value', value);
+                   if(widget.set) widget.set('value', value);
                 }
                 return value;
             },

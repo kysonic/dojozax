@@ -34,7 +34,7 @@
         <h2>HIDE PANEL</h2>
         <label>PASSWORD MODEL</label><label id="age-label">AGE</label><label id="count-label">COUNT</label><br>
         <input type="text" z-model-event="input"  z-enabled="count" z-model="password" z-id="under"/>
-       <input type="text" z-model="ages" z-func="validator.isNumber" z-model-event="input" />
+        <input type="text" z-model="ages" z-func="validator.isNumber" z-model-event="input" />
         <input type="text" z-model="count" z-func="changeNav" z-model-event="input" />
         <div z-each="person"  z-node="person" z-model="start,ages,count"  z-query='{age:`ages`},{start:`start`,count:`count`}' z-id="person">
             <div class="p-wrapper">

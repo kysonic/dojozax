@@ -24,10 +24,16 @@ define([
                         itemHtml = node.zEachTemplate;
                         array.forEach(modelArray,function(expression){
                             var model = expression.replace(/`/g,'');
-                            var regexp = new RegExp('\\`('+model+'.*?)\\`','g');
+                            var regexp = new RegExp('\\`('+model.replace(self.specialSymbols,'\\$1')+')\\`','g');
                             itemHtml = itemHtml.replace(regexp,function(){
-                                var exp = model=='value' ? 'item' : arguments[1].replace(model,'item.'+model);
-                                return eval(exp);
+                                with (item) {
+                                    try{
+                                        return eval(model);
+                                    }
+                                    catch(e){
+                                        console.error(e);
+                                    }
+                                }
                             });
                         });
                         domConstruct.place(lang.trim(itemHtml),node,'last');
@@ -57,8 +63,7 @@ define([
                     var qObject = eval('('+qQuery+')');
                     var sObject = sQuery ? eval('('+sQuery+')') :{};
                 }catch(e){
-                    console.log('Query is wrong!');
-                    return this.zStore[strModel].queryArray({},{});
+                    //  console.error(e);
                 }
                 node.queryValue = this.zStore[strModel].queryArray(qObject);
                 return this.zStore[strModel] ? this.zStore[strModel].queryArray(qObject,sObject) : [];
