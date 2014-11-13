@@ -75,3 +75,35 @@ define([
     }
 );
 ```
+##z-model
+
+Base data binding tools of a dojo zax. He connect dom nodes and javascript dojo class model property. **All model variables must be added in class model property!** z-model attribute work with all inputs element: input, textarea, select, checkbox, radio...
+
+**HTML**
+```
+<input type="text" z-model="data"/>
+```
+**JS**
+```
+return declare("tel.test.zax", [mv], {
+            options: null,
+            model: {
+                data:'someData'
+            }
+        });
+```
+##z-model-event 
+
+Work with z-model. Define a event for model change. z-model-event may be one of this list: input, change, keydown, keyup, mouseover, mouseleave, click. (all of dojo on available events)
+**HTML**
+```
+<input type="text" z-model="data" z-model-event="input" />
+```
+
+##z-bind
+
+Bind data of model variables to static element. 
+**HTML**
+```
+<input type="text" z-model="data" z-model-event="input" /><div z-bind="data"></div>
+```
