@@ -147,7 +147,7 @@ Enable\disable element
 <input type="text" z-model="data" z-model-event="input" z-enabled="data" />
 ```
 ##z-each
-Repeat construction on nested node of current. Bind data in format [{},{},{}] or ['1','2','3']. Automaticly create a Store event in mv.zStore dojo Memory object. with name of current model. In element z-each="presons" we have a mv.zStore['persons'] Memory object. In this
+Repeat construction on nested node of current. Bind data in format [{},{},{}] or ['1','2','3']. Automaticly create a Store event in mv.zStore dojo Memory object. with name of current model. In element z-each="presons" we have a mv.zStore['persons'] Memory object. In this Memory object you can execute query. See [Dojo Memory](http://dojotoolkit.org/reference-guide/1.10/dojo/store/Memory.html)
 
 ##Bind events.
 
