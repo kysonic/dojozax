@@ -194,8 +194,30 @@ define([
     }
 );
 ```
+## z-view
+Adding child view for some tag. View under tags has evaluated automaticly.
 
-##Bind events.
+**HTML**
+```
+<div z-view="views.someView"></div>
+```
+**JS**
+```
+return declare("tel.test.zax", [mv], {
+            options: null,
+            model: {
+                data:'someData'
+            },
+            views: {
+                someView: '<div z-click="plusClick">+</div>'
+            },
+            plusClick: function(args,mv){
+                console.log(this);
+            }
+    });        
+```
+
+#Bind events.
 
 Currently dojo zax supports event: z-click,z-change,z-mouseover,z-mouseout,z-doubleclick. z-event define callback to event in class methods. 
 
