@@ -38,7 +38,7 @@ define([
                             self.executors[model][executorName] = {node: node, action: actionName,expression:expression};
                             var value = /~/g.test(expression) ? self.execute.call(self,expression) : lang.getObject(model, false, self.store.data); //
                             var modelData = lang.getObject(model, false, self.store.data);
-                            if(!modelData && self.options.isDebug) console.debug('Your model has no instance >>> '+modelData);
+                            if(!modelData && self.options.isDebug) console.debug('Your model has no instance '+model);
                             if(modelData && modelData instanceof Array && !self.zStore[model]) self.setMemory(model,lang.getObject(model, false, self.store.data));
                             if(actionName=='zModel') lang.setObject(model, value, self.store.data);
                             self[actionName].call(self, node, value, model,domAttr.get(node, 'z-not-first'));
