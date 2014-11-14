@@ -5,7 +5,7 @@ Zax is a small MV framework based on dojo.
 
 #Basics 
 
-Structural unit of dojo zax is a html tag width data-dojo-type attribute when constraint link of coincedent class (use dojo declare). This class must be inherits of zax/mv base class. For default parsing you must on parseOnLoad setting in  [dojoConfig](http://dojotoolkit.org/documentation/tutorials/1.9/dojo_config/).
+Structural unit of dojo zax is a html tag with data-dojo-type attribute when constraint link of coincedent class (use dojo declare). This class must be inherits of zax/mv base class. For default parsing you must on parseOnLoad setting in  [dojoConfig](http://dojotoolkit.org/documentation/tutorials/1.9/dojo_config/).
 
 **index.html**
 ```
@@ -147,9 +147,77 @@ Enable\disable element
 <input type="text" z-model="data" z-model-event="input" z-enabled="data" />
 ```
 ##z-each
-Repeat construction on nested node of current. Bind data in format [{},{},{}] or ['1','2','3']. Automaticly create a Store event in mv.zStore dojo Memory object. with name of current model. In element z-each="presons" we have a mv.zStore['persons'] Memory object. In this
+Repeat construction on nested node of current. Bind data in format [{},{},{}] or ['1','2','3']. Automaticly create a Store event in mv.zStore dojo Memory object. with name of current model. In element z-each="presons" we have a mv.zStore['persons'] Memory object. In this Memory object you can execute query. See [Dojo Memory](http://dojotoolkit.org/reference-guide/1.10/dojo/store/Memory.html). In body of z-each have a access to current item object. You can write a \`nameOfItemParam\`. It is evaluate expression in context current item. Example:
 
-##Bind events.
+**HTML**
+
+```
+<div z-each="person"  z-node="person" z-model="start,ages,count"  z-query='{age:`ages`},{start:`start`,count:`count`}' z-id="person">
+            <div class="p-wrapper">
+                <hr/>
+                <span>PERSON NAME: </span><div z-show="password" z-id="`name`">`name`</div><br/>
+                <span>PERSON AGE: </span><div>`age`</div><br/>
+                <span>PERSON STATUS: </span><div>`status`</div>
+                <hr/>
+            </div>
+</div>
+```
+**JS**
+```
+define([
+        "dojo/_base/declare",
+        "zax/mv",
+        "dojo/query",
+        "dojo/dom-attr",
+        "dojo/dom-class"
+    ],
+    function (declare, mv,query,domAttr,domClass) {
+        return declare("app.zax", mv, {
+            options: null,
+            model: {
+                name: 'hide',
+                show: false,
+                person: [
+                    {id: 2, name: 'John Doe', age: 22, status: 'employer'},
+                    {id: 3, name: 'Edward Snouden', age: 22, status: 'spy'},
+                    {id: 1, name: 'Eric Kripke', age: 22, status: 'make a supernatural'},
+                    {id: 8, name: 'Arseny Jazenuh', age: 22, status: 'betrayer'},
+                    {id: 10, name: 'Oby Van Kenoby', age: 22, status: 'jedi'},
+                    {id: 22, name: 'Han Baty', age: 22, status: 'conquer'},
+                    {id: 22, name: 'Oliver Kan', age: 25, status: 'goalkeeper'}
+                ],
+                ages: 22,
+                count: 2,
+                start: 0
+            }
+        });
+    }
+);
+```
+## z-view
+Adding child view for some tag. View under tags has evaluated automaticly.
+
+**HTML**
+```
+<div z-view="views.someView"></div>
+```
+**JS**
+```
+return declare("tel.test.zax", [mv], {
+            options: null,
+            model: {
+                data:'someData'
+            },
+            views: {
+                someView: '<div z-click="plusClick">+</div>'
+            },
+            plusClick: function(args,mv){
+                console.log(this);
+            }
+    });        
+```
+
+#Bind events.
 
 Currently dojo zax supports event: z-click,z-change,z-mouseover,z-mouseout,z-doubleclick. z-event define callback to event in class methods. 
 
