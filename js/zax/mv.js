@@ -26,7 +26,7 @@ define([
             actions: ['z-each','z-model','z-bind','z-show','z-enabled','z-class','z-view'],
             executors: {},
             changeState: [],
-            specialSymbols: /([()!<>=\+\-\?*\/\%\:])/g,
+            specialSymbols: /([()!<>=\+\-\?*\/\%\:.\[\]])/g,
             /**
              * Конструктор
              * @param options - опции\атрибуты
