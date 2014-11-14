@@ -37,6 +37,9 @@ define([
                             });
                         });
                         domConstruct.place(lang.trim(itemHtml),node,'last');
+                        // Callback when a element add
+                        var zItemAdd = domAttr.get(node,'z-item-add');
+                        if(zItemAdd) self[zItemAdd].call(self,node,item);
                     });
                     /**
                      * Parse attrs in new Nodes

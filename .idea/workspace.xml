@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9344d1e4-c382-4207-9090-a9152d141df8" name="Default" comment="z-show. z-display added">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/mv.js" afterPath="$PROJECT_DIR$/js/zax/mv.js" />
+    <list default="true" id="9344d1e4-c382-4207-9090-a9152d141df8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/actions/zEach.js" afterPath="$PROJECT_DIR$/js/zax/actions/zEach.js" />
     </list>
     <ignored path="dojo zax.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/index.html" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415886476468" ignored="false" />
     <file path="/baseAction.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415886518564" ignored="false" />
     <file path="/zax.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415889189860" ignored="false" />
-    <file path="/Dummy.txt" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415955191860" ignored="false" />
+    <file path="/Dummy.txt" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415970772458" ignored="false" />
     <file path="/status.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415893924049" ignored="false" />
-    <file path="$PROJECT_DIR$/../telegram/public/js/tel/module/claims.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415958786795" ignored="false" />
-    <file path="/claims.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415958786252" ignored="false" />
+    <file path="$PROJECT_DIR$/../telegram/public/js/tel/module/claims.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415967357368" ignored="false" />
+    <file path="/claims.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415967341103" ignored="false" />
     <file path="$PROJECT_DIR$/../telegram/public/claims.json" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415894018738" ignored="false" />
-    <file path="$PROJECT_DIR$/../telegram/module/Application/view/application/test/zax.phtml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415959264189" ignored="false" />
+    <file path="$PROJECT_DIR$/../telegram/module/Application/view/application/test/zax.phtml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415967370543" ignored="false" />
     <file path="/zax.phtml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415959264189" ignored="false" />
     <file path="$PROJECT_DIR$/../telegram/public/js/tel/module/claim.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415895080749" ignored="false" />
     <file path="/claim.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415895080749" ignored="false" />
@@ -24,6 +24,11 @@
     <file path="/zEach.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415959164241" ignored="false" />
     <file path="/mv.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415959232721" ignored="false" />
     <file path="$PROJECT_DIR$/../telegram/public/js/zax/mv.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415959234554" ignored="false" />
+    <file path="$PROJECT_DIR$/../tetatele/public/javascripts/main.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415961016933" ignored="false" />
+    <file path="/main.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415960703869" ignored="false" />
+    <file path="$PROJECT_DIR$/../tetatele/.idea/workspace.xml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415961039696" ignored="false" />
+    <file path="$PROJECT_DIR$/../tetatele/public/build/js/main.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415961028741" ignored="false" />
+    <file path="$PROJECT_DIR$/../telegram/logs/errors.log" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415967202800" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,10 +93,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mv.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="mv.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/zax/mv.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="60" selection-start="969" selection-end="969" vertical-scroll-proportion="0.6314581">
+            <state line="28" column="60" selection-start="969" selection-end="969" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zEach.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/zax/actions/zEach.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="77" column="0" selection-start="3337" selection-end="3337" vertical-scroll-proportion="0.84879726">
               <folding />
             </state>
           </provider>
@@ -115,13 +129,13 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/zax/actions/zEach.js" />
         <option value="$PROJECT_DIR$/js/zax/actions/zModel.js" />
         <option value="$PROJECT_DIR$/js/zax/actions/baseAction.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/app/zax.js" />
         <option value="$PROJECT_DIR$/js/zax/actions/zShow.js" />
         <option value="$PROJECT_DIR$/js/zax/mv.js" />
+        <option value="$PROJECT_DIR$/js/zax/actions/zEach.js" />
       </list>
     </option>
   </component>
@@ -157,6 +171,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -253,7 +268,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -262,8 +276,8 @@
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -310,7 +324,11 @@
       <created>1415955105003</created>
       <updated>1415955105003</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="specialSymbols corrects">
+      <created>1415960238636</created>
+      <updated>1415960238636</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -321,7 +339,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21931697" sideWeight="0.6714443" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22198506" sideWeight="0.6714443" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -389,7 +407,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="z-show. z-display added" />
+    <option name="LAST_COMMIT_MESSAGE" value="specialSymbols corrects" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -405,6 +423,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Add Utils. Fix z-each eval" />
     <MESSAGE value="z-show. z-display added" />
+    <MESSAGE value="specialSymbols corrects" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -464,11 +483,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/zax/actions/zEach.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="31" selection-start="2942" selection-end="2952" vertical-scroll-proportion="0.67164177" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="8" selection-start="1914" selection-end="2385" vertical-scroll-proportion="0.0">
@@ -485,9 +499,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/zax/actions/setStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/zax/actions/zModel.js">
@@ -513,7 +525,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/zax/mv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="60" selection-start="969" selection-end="969" vertical-scroll-proportion="0.6314581">
+        <state line="28" column="60" selection-start="969" selection-end="969" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/zax/actions/zEach.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="0" selection-start="3337" selection-end="3337" vertical-scroll-proportion="0.84879726">
           <folding />
         </state>
       </provider>
