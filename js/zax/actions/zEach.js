@@ -20,6 +20,7 @@ define([
                 if(value instanceof Array){
                     var itemHtml = node.zEachTemplate;
                     var modelArray = itemHtml.match(/`(.*?)`/g);
+                    var i = 0;
                     array.forEach(value,function(item){
                         itemHtml = node.zEachTemplate;
                         array.forEach(modelArray,function(expression){
@@ -40,6 +41,7 @@ define([
                         // Callback when a element add
                         var zItemAdd = domAttr.get(node,'z-item-add');
                         if(zItemAdd) self[zItemAdd].call(self,node,item);
+                        i++;
                     });
                     /**
                      * Parse attrs in new Nodes
