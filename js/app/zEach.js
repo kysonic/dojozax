@@ -21,7 +21,7 @@ define([
                 name: 'Edward Snouden'
             },
             changePerson: function (args, mv) {
-                mv.zStore.person.put({id: 1, name: 'Kreeper', age: 22, status: 'ho'})
+                mv.zStore.person.remove(2)
             }
         });
     }

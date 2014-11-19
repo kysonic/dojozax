@@ -20,6 +20,7 @@ define([
                 if(value instanceof Array){
                     var itemHtml = node.zEachTemplate;
                     var modelArray = itemHtml.match(/`(.*?)`/g);
+                    // Global iterator
                     var i = 0;
                     array.forEach(value,function(item){
                         itemHtml = node.zEachTemplate;

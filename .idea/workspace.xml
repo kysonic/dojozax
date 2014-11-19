@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9344d1e4-c382-4207-9090-a9152d141df8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zEach.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/app/zEach.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/actions/baseAction.js" afterPath="$PROJECT_DIR$/js/zax/actions/baseAction.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/zEach.js" afterPath="$PROJECT_DIR$/js/app/zEach.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/actions/zEach.js" afterPath="$PROJECT_DIR$/js/zax/actions/zEach.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/actions/zShow.js" afterPath="$PROJECT_DIR$/js/zax/actions/zShow.js" />
     </list>
     <ignored path="dojo zax.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/index.html" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415886476468" ignored="false" />
     <file path="/baseAction.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415983698509" ignored="false" />
     <file path="/zax.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415889189860" ignored="false" />
-    <file path="/Dummy.txt" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415977593320" ignored="false" />
+    <file path="/Dummy.txt" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1416399266622" ignored="false" />
     <file path="/status.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415893924049" ignored="false" />
     <file path="$PROJECT_DIR$/../telegram/public/js/tel/module/claims.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415976774526" ignored="false" />
     <file path="/claims.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415976641035" ignored="false" />
@@ -23,7 +24,7 @@
     <file path="/claim.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415895080749" ignored="false" />
     <file path="$PROJECT_DIR$/../telegram/public/claim.json" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415894810220" ignored="false" />
     <file path="$PROJECT_DIR$/../telegram/public/js/zax/actions/zEach.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415975108854" ignored="false" />
-    <file path="/zEach.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415984116932" ignored="false" />
+    <file path="/zEach.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415984982673" ignored="false" />
     <file path="/mv.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415959232721" ignored="false" />
     <file path="$PROJECT_DIR$/../telegram/public/js/zax/mv.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415975171509" ignored="false" />
     <file path="$PROJECT_DIR$/../tetatele/public/javascripts/main.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1415961016933" ignored="false" />
@@ -64,16 +65,16 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="70" selection-start="1123" selection-end="1138" vertical-scroll-proportion="-4.2413793">
+            <state line="27" column="70" selection-start="1123" selection-end="1138" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zEach.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="zEach.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zEach.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="84" selection-start="629" selection-end="629" vertical-scroll-proportion="0.42517814">
+            <state line="19" column="102" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,7 +83,16 @@
       <file leaf-file-name="zEach.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/app/zEach.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="18" selection-start="799" selection-end="799" vertical-scroll-proportion="0.0">
+            <state line="17" column="78" selection-start="780" selection-end="780" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baseAction.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/zax/actions/baseAction.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="24" selection-start="234" selection-end="234" vertical-scroll-proportion="0.25581396">
               <folding />
             </state>
           </provider>
@@ -91,52 +101,7 @@
       <file leaf-file-name="person.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/person.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="405" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="baseAction.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/zax/actions/baseAction.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="46" selection-start="4164" selection-end="4164" vertical-scroll-proportion="-9.56">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zBind.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/zax/actions/zBind.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="55" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zModel.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/zax/actions/zModel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="8" selection-start="185" selection-end="186" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zShow.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/zax/actions/zShow.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zEach.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/zax/actions/zEach.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="28" selection-start="2098" selection-end="2098" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="405" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -168,11 +133,12 @@
         <option value="$PROJECT_DIR$/js/zax/actions/zBind.js" />
         <option value="$PROJECT_DIR$/js/zax/actions/zEach.js" />
         <option value="$PROJECT_DIR$/js/zax/actions/baseAction.js" />
-        <option value="$PROJECT_DIR$/js/app/zEach.js" />
         <option value="$PROJECT_DIR$/zEach.html" />
+        <option value="$PROJECT_DIR$/js/app/zEach.js" />
       </list>
     </option>
   </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
@@ -205,7 +171,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -298,6 +263,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -311,6 +277,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\dojozax\js\zax\actions" />
       <recent name="C:\xampp\htdocs\dojozax\js\app" />
       <recent name="C:\xampp\htdocs\dojozax" />
       <recent name="C:\xampp\htdocs\dojozax\js" />
@@ -368,19 +335,22 @@
       <created>1415975256337</created>
       <updated>1415975256337</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="zEach Html Test. Add zStore put.">
+      <created>1415984913055</created>
+      <updated>1415984913055</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32745314" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22198506" sideWeight="0.6714443" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22732124" sideWeight="0.6714443" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -391,6 +361,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32741398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32745314" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -447,7 +418,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed model instance message. SpecialSymbols" />
+    <option name="LAST_COMMIT_MESSAGE" value="zEach Html Test. Add zStore put." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -466,6 +437,7 @@
     <MESSAGE value="specialSymbols corrects" />
     <MESSAGE value="z-add-item for z-each" />
     <MESSAGE value="fixed model instance message. SpecialSymbols" />
+    <MESSAGE value="zEach Html Test. Add zStore put." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -497,60 +469,14 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/zax/actions/setStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/app/zax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="72" selection-start="1832" selection-end="1884" vertical-scroll-proportion="0.025258323">
-          <folding />
-        </state>
+        <state line="42" column="72" selection-start="1832" selection-end="1884" vertical-scroll-proportion="0.025258323" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/zax/mv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="2494" selection-end="2494" vertical-scroll-proportion="1.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/zax/actions/zShow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/zax/actions/zModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="8" selection-start="185" selection-end="186" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/zax/actions/zBind.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="55" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/zax/actions/zEach.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="28" selection-start="2098" selection-end="2098" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/zax/actions/baseAction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="46" selection-start="4164" selection-end="4164" vertical-scroll-proportion="-9.56">
-          <folding />
-        </state>
+        <state line="77" column="0" selection-start="2494" selection-end="2494" vertical-scroll-proportion="1.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/person.json">
@@ -560,23 +486,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/zEach.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="18" selection-start="799" selection-end="799" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="70" selection-start="1123" selection-end="1138" vertical-scroll-proportion="-4.2413793">
+        <state line="27" column="70" selection-start="1123" selection-end="1138" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zEach.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="84" selection-start="629" selection-end="629" vertical-scroll-proportion="0.42517814">
+        <state line="19" column="102" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/zEach.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="78" selection-start="780" selection-end="780" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/zax/actions/baseAction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="24" selection-start="234" selection-end="234" vertical-scroll-proportion="0.25581396">
           <folding />
         </state>
       </provider>

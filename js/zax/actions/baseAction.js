@@ -79,6 +79,16 @@ define([
                     remove.apply(this,arguments);
                     own.store.set('data.' + strModel, this.data);
                 }
+                Memory.prototype.update = function(query,values){
+                    var item = this.query(query)[0];
+                    if(item!=undefined) {
+                        for(var key in values) {
+                            var value = values[key];
+                            item[key] = value;
+                        }
+                        own.store.set('data.' + strModel, declare.safeMixin(this.data,item));
+                    }
+                }
                 this.zStore[strModel] = new Memory({data: value,
                     queryArray: function (query, sort) {
                         var queryArray = [];
@@ -87,7 +97,7 @@ define([
                         });
                         return queryArray;
                     },
-                    getJson: function (target,localStorageName,callback) {
+                    getJson: function (target,localStorageName,callback,preProcessing) {
                         var self = this;
                         if(localStorage && localStorage.getItem(localStorageName)) {
                             var data = JSON.parse(localStorage.getItem(localStorageName))[target];
@@ -112,7 +122,7 @@ define([
                                         localData[target+'date'] = locale.format(new Date(), {datePattern: "yyyy-MM-dd HH:mm:ss", selector: "date"});
                                         localStorage.setItem(localStorageName, JSON.stringify(localData));
                                     }
-                                    self.data = data;
+                                    self.data = preProcessing ? preProcessing(data) : data;
                                     own.store.set('data.' + strModel, self.data);
                                     if(callback) callback(data);
                                 },

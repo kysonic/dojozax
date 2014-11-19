@@ -11,7 +11,8 @@ define([
             zShow: function (node,value) {
                 if(value instanceof Array) value = value[0] ? value : null;
                 if(!node.display) node.display = domStyle.get(node,'display');
-                domStyle.set(node,'display',value ? domAttr.get(node,'z-display') ? domAttr.get(node,'z-display') : node.display : 'none');
+                var zDisplay = domAttr.get(node,'z-display');
+                domStyle.set(node,'display',value ? zDisplay : 'none');
             }
         });
     }
