@@ -37,7 +37,7 @@ define([
                             array.forEach(node.models.attrs,function(item){
                                 self.baseNode.actions[item] = self.baseNode.actions[item] || [];
                                 self.currentNode.models.push(item);
-                                var action = new Action({node:node,attr:attr.nodeName.toLowerCase(),expression:attr.nodeValue,model:item});
+                                var action = new Action({node:node,attr:attr.nodeName.toLowerCase(),expression:attr.nodeValue,model:item,context:self.currentNode.context,_context:self.currentNode._context});
                                 self.baseNode.actions[item].push(action);
                                 node.actions.push(action);
                             });
@@ -49,13 +49,12 @@ define([
                         array.forEach(node.models.inner,function(item){
                             self.baseNode.actions[item] = self.baseNode.actions[item] || [];
                             self.currentNode.models.push(item);
-                            var action = new Action({node:node,innerText:true,expression:node.innerText || node.textContent,model:item});
+                            var action = new Action({node:node,innerText:true,expression:node.innerText || node.textContent,model:item,context:self.currentNode.context,_context:self.currentNode._context});
                             self.baseNode.actions[item].push(action);
                             node.actions.push(action);
                         });
                     }
                 });
-
                 this.dataBinding();
             },
             /**
@@ -66,9 +65,9 @@ define([
                 for (var property in this.baseNode.actions) {
                     if(!this.watchers[property]) {
                         this.watchers[property] = true;
-                        this.model.watch(property, function (p, o, n) {
+                        self.currentNode.context.watch(property, function (p, o, n) {
+                            self.currentNode._context[p] = n;
                             array.forEach(self.baseNode.actions[p],function(item){
-                                self._model[p] = n;
                                 if(item) item.execute(self,p, o, n);
                                 return n;
                             });

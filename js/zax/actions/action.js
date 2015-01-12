@@ -7,13 +7,14 @@ define([
     "zax/attrs/value",
     "zax/attrs/checked",
     "zax/attrs/hidden",
-    "zax/attrs/z-if"
+    "zax/attrs/z-if",
+    "zax/attrs/z-each"
 ],
-    function (declare,domAttr,lang,array,Utils,value,checked,hidden,zIf) {
+    function (declare,domAttr,lang,array,Utils,value,checked,hidden,zIf,zEach) {
         /**
          * Parser entity
          */
-        return declare("Action", [value,checked,hidden,zIf], {
+        return declare("Action", [value,checked,hidden,zIf,zEach], {
             node: {},
             attr: '',
             innerText: false,
@@ -21,6 +22,8 @@ define([
             mv: {},
             model: [],
             template: '',
+            context: {},
+            _context: {},
             constructor: function(options){
                 for(var prop in options) {
                     if(this[prop]!=undefined) this[prop] = options[prop];
@@ -34,8 +37,8 @@ define([
             },
             evaluateExpression: function(){
                 var filter = Utils.deleteMustaches(this.expression).split('|');
-                if(!filter[1]) with (this.mv._model) return eval(lang.trim(filter[0]));
-                if(this.mv.filters[lang.trim(filter[1])]) with (this.mv._model) return this.mv.filters[lang.trim(filter[1])](eval(lang.trim(filter[0])));
+                if(!filter[1]) with (this._context) return eval(lang.trim(filter[0]));
+                if(this.mv.filters[lang.trim(filter[1])]) with (this._context) return this.mv.filters[lang.trim(filter[1])](eval(lang.trim(filter[0])));
             },
             innerTextExecutor: function(p,o,n){
                 this.node.innerHTML = this.evaluateExpression();

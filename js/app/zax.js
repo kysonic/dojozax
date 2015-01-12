@@ -9,11 +9,13 @@ define([
             options: null,
             model: {
                 persons: [
-                    {name:'Grisha'}
+                    {name:'Grisha',age:25},
+                    {name:'Lisha',age:20}
                 ],
+                person: {name:'AaA',age:20},
                 name: 'Anton',
                 age: 25,
-                test: false
+                test: true
             },
             filters: {
                 upper: function(value){
@@ -24,7 +26,10 @@ define([
                 /*Declare*/
                 var self = this;
                 this.options = options;
-
+               setTimeout(function(){
+                   self.model.name = 'Book';
+                   console.log('Book')
+               },1000);
             }
         });
     }

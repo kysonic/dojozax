@@ -1,6 +1,7 @@
 define([
     "dojo/_base/declare",
     "dojo/_base/array",
+    "dojo/_base/lang",
     "dojo/dom-construct",
     "dojo/dom-attr",
     "dojo/query",
@@ -10,7 +11,7 @@ define([
     "zax/utils/watch",
     "zax/polyfills/indexOf"
 ],
-    function (declare,array,domConstruct,domAttr,query,Utils,Parse,Bind) {
+    function (declare,array,lang,domConstruct,domAttr,query,Utils,Parse,Bind) {
         /**
          * Сущность mv.
          */
@@ -21,37 +22,44 @@ define([
             watchers: {},
             template: null,
             currentNode: null,
+            currentContext: {},
             $:{},
             templates: {
                 zIf:[],
                 zEach:[]
             },
             /**
-             * Конструктор
-             * @param options - опции\атрибуты
-             * @param node - узел привязки
+             * Constructor
+             * @param options - attributes\options
+             * @param node - base dom node.
              */
             constructor: function (options, node) {
-                /*Declare*/
                 this.options = options;
                 this.baseNode = node;
+                this.baseNode.actions = {};
                 this.initialize();
             },
+            /**
+             * Init function
+             */
             initialize: function () {
-                var self = this;
-                // Pure model object
-                this._model = this.model;
-                this.model = createWatcher(this.model);
-                this.baseNode.actions = {};
-                this.parseNode(this.baseNode);
+                this.parseNode(this.baseNode,this.model);
+                this.model = this.baseNode.context;
                 this.getNodes();
-                //this.basicSet();
-                //console.log(this.baseNode.actions)
             },
-            parseNode: function(node){
+            /**
+             * Base function - set dom node and model context.
+             * @param node - node for parsing and binding
+             * @param context - context for binding
+             */
+            parseNode: function(node,context){
+                // Pure model object
+                node._context = context;
+                node.context = createWatcher(context);
+                // Set node
                 this.currentNode = node;
                 this.currentNode.models = [];
-                this.currentNode.template = node.innerHTML;
+                // Basic operations
                 this.parse();
                 this.bind();
                 this.basicSet(Utils.uniqueArray(this.currentNode.models));
@@ -60,23 +68,23 @@ define([
                 var self = this;
                 var modelProperties = [];
                 array.forEach(expression.match(this.bindExpr.modelProperty),function(item){
-                    if(self._model[item]!=undefined) modelProperties.push(item);
+                    if(self.currentNode._context[item]!=undefined) modelProperties.push(item);
                 });
                 return modelProperties;
             },
             basicSet: function(model){
                 var self = this;
                 array.forEach(model,function(property){
-                    self.model[property] = self._model[property];
+                    self.currentNode.context[property] = self.currentNode._context[property];
                 });
             },
-            injectBoundHTML: function(template,node,like){
+            injectBoundHTML: function(template,node,context){
                 if(!node) return console.error('Injected node not found!');
                 var like  = like || 'first';
                 var container =  domConstruct.create('div');
                 container.innerHTML = template;
                 var parse = domConstruct.place(container,node,like);
-                this.parseNode(parse);
+                this.parseNode(parse,context || this.model);
                 this.getNodes();
                 Utils.unWarp(container);
             },

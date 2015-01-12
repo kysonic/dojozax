@@ -26,7 +26,7 @@ define([
                     var event = /MSIE (8|9)/.test(window.navigator.userAgent) ? 'keyup' : 'input';
                     if(!this.node.bindEvents[event]){
                         this.node.bindEvents[event]= on(this.node,event,function(event){
-                            lang.setObject(self.model,event.target.value,self.mv.model);
+                            lang.setObject(self.model,event.target.value,self.context);
                         });
                     }
                 },
@@ -36,7 +36,7 @@ define([
                     this.node.checked = this.mv._model[this.model];
                     if(!this.node.bindEvents[event]){
                         this.node.bindEvents[event]= on(this.node,event,function(event){
-                            lang.setObject(self.model,event.target.checked,self.mv.model);
+                            lang.setObject(self.model,event.target.checked,self.context);
                         });
                     }
                 },
@@ -45,7 +45,7 @@ define([
                     var event = 'change';
                     if(!this.node.bindEvents[event]){
                         this.node.bindEvents[event]= on(this.node,event,function(event){
-                            lang.setObject(self.model,event.target.value,self.mv.model);
+                            lang.setObject(self.model,event.target.value,self.context);
                         });
                     }
                 },
@@ -54,7 +54,7 @@ define([
                     var event = /MSIE (8|9)/.test(window.navigator.userAgent) ? 'keyup' : 'input';
                     if(!this.node.bindEvents[event]){
                         this.node.bindEvents[event]= on(this.node,event,function(event){
-                            lang.setObject(self.model,event.target.value,self.mv.model);
+                            lang.setObject(self.model,event.target.value,self.context);
                         });
                     }
                 }

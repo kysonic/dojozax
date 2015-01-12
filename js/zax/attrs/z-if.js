@@ -18,8 +18,7 @@ define([
                     });
                     this.node.innerHTML = '';
                 }else {
-                    if(!this.node.innerHTML)
-                        self.mv.injectBoundHTML(this.node.data.template,this.node);
+                    self.mv.injectBoundHTML(this.node.data.template,this.node);
                 }
             }
         });
