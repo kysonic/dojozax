@@ -1,77 +1,30 @@
 define([
         "dojo/_base/declare",
-        "zax/mv",
         "dojo/query",
-        "dojo/dom-attr",
-        "dojo/dom-class"
+        "dijit/form/DateTextBox",
+        "zax/mv"
     ],
-    function (declare, mv,query,domAttr,domClass) {
+    function (declare,query,DateTextBox,mv) {
         return declare("app.zax", mv, {
             options: null,
             model: {
-                name: 'hide',
-                show: false,
-                person: [
-                    {id: 2, name: 'John Doe', age: 22, status: 'employer'},
-                    {id: 3, name: 'Edward Snouden', age: 22, status: 'spy'},
-                    {id: 1, name: 'Eric Kripke', age: 22, status: 'make a supernatural'},
-                    {id: 8, name: 'Arseny Jazenuh', age: 22, status: 'betrayer'},
-                    {id: 10, name: 'Oby Van Kenoby', age: 22, status: 'jedi'},
-                    {id: 22, name: 'Han Baty', age: 22, status: 'conquer'},
-                    {id: 22, name: 'Oliver Kan', age: 25, status: 'goalkeeper'}
+                persons: [
+                    {name:'Grisha'}
                 ],
-                ages: 22,
-                count: 2,
-                start: 0,
-                nav: [{value:0},{value:1},{value:2}]
+                name: 'Anton',
+                age: 25,
+                test: false
+            },
+            filters: {
+                upper: function(value){
+                    return value + 22;
+                }
             },
             constructor: function (options, node) {
                 /*Declare*/
+                var self = this;
                 this.options = options;
-                this.options.model = {name: 'someName'};
-            },
-            check: function (args, mv) {
-                mv.store.set('data.show', mv.store.data.name == 'show' && mv.store.data.password == "password");
-            },
-            test: {
-                addRndPerson: function (args, mv) {
-                    mv.zStore['person'].put({name: mv.utils.randomString(5), age: 22, status:"rnd"});
-                    mv.store.set('data.person', mv.zStore['person'].data);
-                    mv.store.set('data.start',0);
-                },
-                getJson: function (args, mv) {
-                    mv.zStore['person'].getJson('/dojozax/person.json');
-                }
-            },
-            utils: {
-                randomString: function (length, chars) {
-                    chars = chars ? chars : '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                    var result = '';
-                    for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
-                    return result;
-                }
-            },
-            setStart: function (args, mv) {
-                query('.b-button').forEach(function(item){
-                    domClass.remove(item,'b-selected');
-                });
-                var value = domAttr.get(this, 'data-value');
-                var count = mv.store.data.count;
-                mv.store.set('data.start', parseInt(value*count));
-                domClass.add(this,'b-selected');
-            },
-            validator:{
-                isNumber: function(node,value){
-                    node.style.borderColor = /^\d+$/g.test(value) ? "" : 'red';
-                }
-            },
-            changeNav: function(node,value){
-                if(value){
-                    var count = Math.round(this.zStore['person'].queryArray({age:this.model.ages}).length/value);
-                    var array = [];
-                    for(var i=0;i<count;i++) array.push({value:i});
-                    this.store.set('data.nav',array);
-                }
+
             }
         });
     }

@@ -94,3 +94,6 @@ header {
 .b-selected {
     background: #5f816d;
 }
+.disabled{
+    opacity: 0.2;
+}

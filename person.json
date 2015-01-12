@@ -1,8 +1,0 @@
-[
-    {"id":2,"name": "Maxi Rodriguez", "age": 22,"status":"football player"},
-    {"id":1,"name": "Max Mistr", "age": 25,"status":"unknown"},
-    {"id":4,"name": "Lindsey Pool", "age": 12,"status":"unknown"},
-    {"id":55,"name": "Denis Pool", "age": 22,"status":"unknown"},
-    {"id":11,"name": "Georg Doe", "age": 22,"status":"unknown"},
-    {"id":1,"name": "Ninja Doe", "age": 22,"status":"unknown"}
-]
