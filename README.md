@@ -212,6 +212,9 @@ clicker: function(e){
   console.log(e);
 }
 ```
+List of available attributes z-
+
+'click','dblclick','select','scroll','resize','play','playing','play','pause','mousewheel','mouseup','mouseover','mouseout','mousemove','mouseleave','mouseenter','mousedown','keyup','keypress','keydown','input','focus','drop','dragstart','dragover','dragleave','dragenter','dragend','drag','change','blur','wheel','abort'
 
 // See more example in index.html of this repo.
 
