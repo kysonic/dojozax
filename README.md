@@ -85,11 +85,19 @@ But, zax not evaluate a expression without model property:
   {{ 2+5 }} // Dont evaluate
 ```
 
-#Attributes
+# Attributes
 
-##Value
+Custom attribute data binding:
 
-Value attribute, in the main, bind some input node like input or textarea with coincident model property. 
+```
+<div data-attr="{{name}}"></div>
+```
+
+if you change "name" model property you atomatically change data-attr of this node.
+
+## Value
+
+Value attribute, in the main, bind some input element like input or textarea with coincident model property. 
 
 ```
  <input type="text" value="{{name}}"/>
@@ -97,7 +105,36 @@ Value attribute, in the main, bind some input node like input or textarea with c
 
 That code bind "name" model property with this node.
 
+List of supported elements: input,input[type="checkbox"],input[type="radio"],textarea,select
+
 // See more example in index.html of this repo.
+
+## Hidden
+
+Hide element. Is work in ie8.
+
+```
+<div  hidden="{{hide}}">HIDDEN CONTENT</div>
+```
+
+Hide if model.hide = true, show if model.hide = false...
+
+## Checked 
+Bind model data with checked node attribute.
+
+```
+    <input id="radio1" type="radio" checked="{{radio == '1'}}" value="1" name="radioGroup"/>
+    <input id="radio2" type="radio" checked="{{radio == '2'}}" value="2" name="radioGroup"/>
+```
+
+Change model property:
+
+```
+this.model.radio = 2;
+```
+
+This switched radio1 on radio2. 
+
 
 
 
