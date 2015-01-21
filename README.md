@@ -119,6 +119,10 @@ Hide element. Is work in ie8.
 
 Hide if model.hide = true, show if model.hide = false...
 
+```
+ <input type="text" value="{{name}}" disabled="{{inputDisabled}}"/>
+```
+
 ## Checked 
 Bind model data with checked node attribute.
 
@@ -177,6 +181,22 @@ query method - show\hide template elements for something query in model property
 this.model.persons.query({name:'John'}); // Show template with items when name is 'John'
 this.model.persons.query({name:/J/i}); // Show template with items when name have "J" or 'j' symbol
 this.model.persons.resetQuery(); // Show all
+```
+
+#Filters
+
+Execute some function with current value and return his result. All filters adding in filters object (like a model). If function not added in filters object he not be working.
+
+```
+<div id="filters">{{name | upper}}</div>
+```
+js:
+```
+filters: {
+          upper: function(value){
+              return value.toUpperCase();
+          }
+}
 ```
 
 
