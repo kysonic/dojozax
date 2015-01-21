@@ -5,7 +5,7 @@ Zax is a small MV framework based on dojo.
 
 #Basics 
 
-Structural unit of dojo zax is a html tag with data-dojo-type attribute (called ZaxNode) when constraint link of coincident class (use dojo declare). This class must be inherits of zax/mv base class. For default parsing you must on parseOnLoad setting in  [dojoConfig](http://dojotoolkit.org/documentation/tutorials/1.9/dojo_config/).
+Structural unit of dojo zax is a html tag with data-dojo-type attribute (called zax node) when constraint link of coincident class (use dojo declare). This class must be inherits of zax/mv base class. For default parsing you must on parseOnLoad setting in  [dojoConfig](http://dojotoolkit.org/documentation/tutorials/1.9/dojo_config/).
 
 Dojo zax works as follows: 
   1. Parsing. 
@@ -54,7 +54,50 @@ define([
 
 ```
 
-Open yor app, and change input values... 
+Open your app, and change input values... 
+
+#Data binding
+
+Zax registrate all needed bindings with help of z-bind attribute. After parsing this attribute automatically sets of all binding nodes. All of necessary data will associate with current node. (Context and other...)
+
+Default context for current zax node call - model. For data binding you can set some property in model. 
+
+```
+model: {
+    name: 'John',
+    newProperty: 2012
+}
+```
+
+If newProperty will be added in body of zax node then dojo zax will be watching newProperty changes.
+
+#Evaluate expressions
+
+You can evaluate expression in {{ }}. 
+
+```
+  {{name + ' superMan'}}
+```
+
+But, zax not evaluate a expression without model property:
+
+```
+  {{ 2+5 }} // Dont evaluate
+```
+
+#Attributes
+
+##Value
+
+Value attribute, in the main, bind some input node like input or textarea with coincident model property. 
+
+```
+ <input type="text" value="{{name}}"/>
+```
+
+That code bind "name" model property with this node.
+
+
 
 
  
