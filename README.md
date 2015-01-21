@@ -199,7 +199,21 @@ filters: {
           }
 }
 ```
+#Binding events
 
+For binding events enough set in z-<event> attribute of node, in which will be executed some function, name of this function.
+
+```
+<div class="button" z-click="{{clicker}}">OK</div>
+```
+in js: 
+```
+clicker: function(e){
+  console.log(e);
+}
+```
+
+// See more example in index.html of this repo.
 
 
 
