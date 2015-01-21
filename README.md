@@ -95,6 +95,11 @@ Custom attribute data binding:
 
 if you change "name" model property you atomatically change data-attr of this node.
 
+
+```
+ <input type="text" value="{{name}}" disabled="{{inputDisabled}}"/>
+```
+
 ## Value
 
 Value attribute, in the main, bind some input element like input or textarea with coincident model property. 
@@ -118,10 +123,6 @@ Hide element. Is work in ie8.
 ```
 
 Hide if model.hide = true, show if model.hide = false...
-
-```
- <input type="text" value="{{name}}" disabled="{{inputDisabled}}"/>
-```
 
 ## Checked 
 Bind model data with checked node attribute.
