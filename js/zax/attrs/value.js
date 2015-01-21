@@ -24,7 +24,7 @@ define([
                 textInputBinding: function(){
                     var self = this;
                     var event = /MSIE (8|9)/.test(window.navigator.userAgent) ? 'keyup' : 'input';
-                    if(!this.node.bindEvents[event]){
+                    if(this.node.bindEvents && !this.node.bindEvents[event]){
                         this.node.bindEvents[event]= on(this.node,event,function(event){
                             lang.setObject(self.model,event.target.value,self.context);
                         });
@@ -33,7 +33,7 @@ define([
                 checkboxInputBinding: function(){
                     var self = this;
                     var event = /MSIE 8/.test(window.navigator.userAgent) ? 'click' : 'change';;
-                    this.node.checked = this.mv._model[this.model];
+                    this.node.checked = this.context._context[this.model];
                     if(!this.node.bindEvents[event]){
                         this.node.bindEvents[event]= on(this.node,event,function(event){
                             lang.setObject(self.model,event.target.checked,self.context);

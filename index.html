@@ -3,17 +3,33 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="/dojozax/stylesheets/style.css"/>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/resources/dojo.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dijit/themes/claro/claro.css">
 </head>
-<body>
+<body class="claro">
 <header>
     <div class="b-header">
         <div class="b-logo">ZAX</div>
     </div>
 </header>
 <div id="b-wrapper" data-dojo-type="app/zax">
-    {{name}}
-    <input type="text" value="{{name}}"/>
+    <label>Wrapped expression</label>
+    <div id="binding">{{name}}</div>
+    <label>Keyboard Input Group</label><br/>
+    <input id="name-input" type="text" value="{{name}}"/><br/>
+    <textarea id="textarea" cols="30" value="{{text}}" rows="10"></textarea><br/>
+    <div id="hidden" hidden="{{hide}}">HIDDEN CONTENT</div>
+    <label>Checkbox Group</label><br/>
+    <input id="checkbox" type="checkbox" value="{{check}}"/><br/>
+    <label>RadioButton Group</label><br/>
+    <input id="radio1" type="radio" checked="{{radio == '1'}}" value="1" name="radioGroup"/>
+    <input id="radio2" type="radio" checked="{{radio == '2'}}" value="2" name="radioGroup"/><br/>
+    <label>Select Group</label><br/>
+    <select name="select" value="{{select}}" id="select">
+        <option value="one">1</option>
+        <option id="select-two" value="two">2</option>
+    </select>
 </div>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js"></script>

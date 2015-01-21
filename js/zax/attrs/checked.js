@@ -1,9 +1,10 @@
 define([
     "dojo/_base/declare",
+    "dojo/_base/lang",
     "dojo/dom-attr",
     "dojo/on"
 ],
-    function (declare,domAttr,on) {
+    function (declare,lang,domAttr,on) {
         /**
          * Parser entity
          */

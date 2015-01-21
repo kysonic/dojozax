@@ -1,0 +1,9 @@
+{
+  "name": "dojozax",
+  "description": "Simple mv framework, based on dojo. ",
+  "version": "0.1.0",
+  "private": false,
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  }
+}

@@ -9,11 +9,11 @@ dojoConfig = {
     packages: [
         {
             name: "zax",
-            location: "/dojozax/js/zax"
+            location: "/js/zax"
         },
         {
             name: "app",
-            location: "/dojozax/js/app"
+            location: "/js/app"
         }
     ],
     async: true,

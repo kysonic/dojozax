@@ -8,28 +8,21 @@ define([
         return declare("app.zax", mv, {
             options: null,
             model: {
-                persons: [
-                    {name:'Grisha',age:25},
-                    {name:'Lisha',age:20}
-                ],
-                person: {name:'AaA',age:20},
-                name: 'Anton',
+                name: 'John',
+                text: 'Lorem ipsum dolor sit amet',
                 age: 25,
-                test: true
+                hide: true,
+                check: true,
+                radio: '2',
+                select: 'two'
             },
             filters: {
                 upper: function(value){
-                    return value + 22;
+                    return value.toUpperCase();
                 }
             },
             constructor: function (options, node) {
-                /*Declare*/
-                var self = this;
-                this.options = options;
-               setTimeout(function(){
-                   self.model.name = 'Book';
-                   console.log('Book')
-               },1000);
+                window.app = this;
             }
         });
     }

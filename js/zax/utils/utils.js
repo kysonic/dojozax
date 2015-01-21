@@ -27,14 +27,15 @@ define([
                     return arguments[1].toUpperCase();
                 });
             },
-            decorator: function decorator(f, cb) {
+            decorator: function decorator(f, cb1, cb2) {
                 return function () {
-                    cb(arguments);
+                    var cbr = cb1(arguments);
                     f.apply(this, arguments);
+                    if(cb2) cb2(cbr);
                 }
             },
-            decorateMethod: function(object,method,cb){
-                object[method] = this.decorator(object[method],cb);
+            decorateMethod: function(object,method,cb1,cb2){
+                object[method] = this.decorator(object[method],cb1,cb2);
             },
             uniqueArray: function (a) {
                 var seen = {};

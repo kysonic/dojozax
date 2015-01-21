@@ -1,22 +1,15 @@
-if (!Array.prototype.indexOf)
-{
-    Array.prototype.indexOf = function(elt /*, from*/)
-    {
-        var len = this.length >>> 0;
+if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function (elem, startFrom) {
+        var startFrom = startFrom || 0;
+        if (startFrom > this.length) return -1;
 
-        var from = Number(arguments[1]) || 0;
-        from = (from < 0)
-            ? Math.ceil(from)
-            : Math.floor(from);
-        if (from < 0)
-            from += len;
-
-        for (; from < len; from++)
-        {
-            if (from in this &&
-                this[from] === elt)
-                return from;
+        for (var i = 0; i < this.length; i++) {
+            if (this[i] == elem && startFrom <= i) {
+                return i;
+            } else if (this[i] == elem && startFrom > i) {
+                return -1;
+            }
         }
         return -1;
-    };
+    }
 }

@@ -18,9 +18,6 @@ define([
         return declare("zax.mv", [Parse,Bind], {
             options: null,
             baseNode: null,
-            actions: ['z-bind','z-each','z-if'],
-            watchers: {},
-            template: null,
             currentNode: null,
             currentContext: {},
             $:{},
@@ -33,7 +30,8 @@ define([
              * @param options - attributes\options
              * @param node - base dom node.
              */
-            constructor: function (options, node) {
+            constructor: function (options, node, model) {
+                if(model) this.model = model;
                 this.options = options;
                 this.baseNode = node;
                 this.baseNode.actions = {};
@@ -45,7 +43,6 @@ define([
             initialize: function () {
                 this.parseNode(this.baseNode,this.model);
                 this.model = this.baseNode.context;
-                this.getNodes();
             },
             /**
              * Base function - set dom node and model context.
@@ -53,51 +50,74 @@ define([
              * @param context - context for binding
              */
             parseNode: function(node,context){
-                // Pure model object
-                node._context = context;
-                node.context = createWatcher(context);
+                // Pure context object
+                if(!context._context) {
+                    var _context = context;
+                    node.context = createWatcher(context);
+                    node.context._context = _context;
+                    node.context.actionNode = node;
+                }else {
+                    node.context = context;
+                    node.context._context = context._context;
+                    node.linkActionNode = context.actionNode;
+                }
                 // Set node
-                this.currentNode = node;
-                this.currentNode.models = [];
+                node.models = [];
+                node.actions = [];
                 // Basic operations
-                this.parse();
-                this.bind();
-                this.basicSet(Utils.uniqueArray(this.currentNode.models));
+                this.parse(node);
+                this.getNodes(node);
+                this.bind(node);
+                this.basicSet(node);
             },
-            getModelProperties: function(expression){
+            getModelProperties: function(expression,zaxNode){
                 var self = this;
                 var modelProperties = [];
+                /*expression = expression.replace(this.bindExpr.arrayExpression,function(){
+                    modelProperties.push(arguments[0]);
+                    return '';
+                });*/
                 array.forEach(expression.match(this.bindExpr.modelProperty),function(item){
-                    if(self.currentNode._context[item]!=undefined) modelProperties.push(item);
+                    if(zaxNode.linkActionNode!=undefined){
+                        if(zaxNode.linkActionNode.context._context[item]!=undefined) modelProperties.push(item);
+                    }
+                    else{
+                        if(zaxNode.context._context[item]!=undefined) modelProperties.push(item);
+                    }
                 });
                 return modelProperties;
             },
-            basicSet: function(model){
+            basicSet: function(zaxNode){
                 var self = this;
-                array.forEach(model,function(property){
-                    self.currentNode.context[property] = self.currentNode._context[property];
+                var models = Utils.uniqueArray(zaxNode.models);
+                array.forEach(models,function(property){
+                    if(zaxNode.linkActionNode) {
+                        zaxNode.linkActionNode.context[property] = zaxNode.linkActionNode.context._context[property];
+                    }
+                    else{
+                        zaxNode.context[property] = zaxNode.context._context[property];
+                    }
                 });
             },
             injectBoundHTML: function(template,node,context){
-                if(!node) return console.error('Injected node not found!');
-                var like  = like || 'first';
-                var container =  domConstruct.create('div');
-                container.innerHTML = template;
-                var parse = domConstruct.place(container,node,like);
-                this.parseNode(parse,context || this.model);
-                this.getNodes();
-                Utils.unWarp(container);
+                if(!node) return console.error('Container node not found!');
+                node.innerHTML= template;
+                this.parseNode(node, context || this.baseNode.context);
             },
             removeBoundNode: function(node){
                 if(!node) return console.error('Removed node not found!');
-                for (var property in this.baseNode.actions) {
-                    var actionSet = this.baseNode.actions[property];
+                if(node.actionNode.actions){
+                    for (var property in node.actionNode.actions) {
+                        var actionSet = node.actionNode.actions[property];
                         array.forEach(node.actions,function(action) {
-                            var idx = actionSet.indexOf(action);
-                            if(-1!==idx) {
-                                actionSet.splice(idx,1);
+                            if(actionSet instanceof Array) {
+                                var idx = actionSet.indexOf(action);
+                                if(-1!==idx) {
+                                    actionSet.splice(idx,1);
+                                }
                             }
                         });
+                    }
                 }
                 node.actions = null;
                 for(var eventName in node.bindEvents) {
@@ -106,9 +126,9 @@ define([
                 node.bindEvents = null;
                 domConstruct.destroy(node);
             },
-            getNodes: function(){
+            getNodes: function(node){
                 var self = this;
-                query('*[id]',this.currentNode).forEach(function(node){
+                query('*[id]',node).forEach(function(node){
                     self.$[domAttr.get(node,'id')] = node;
                 });
             }
