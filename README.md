@@ -135,6 +135,50 @@ this.model.radio = 2;
 
 This switched radio1 on radio2. 
 
+## z-if
+
+Add\remove innerHtml of node with z-if attribute. 
+
+```
+<div z-if="{{ifData}}">
+        Added content with name ({{name}}) model property. 
+</div>
+```
+
+## z-each
+
+The z-each directive instantiates a template once per item from a collection of model property. (Collection is a array of objects with some same properties.) Bind each item of collection with generated DOM elements.
+
+```
+<div z-each="{{persons}}">
+    <hr/>
+    <div>{{name}}</div>
+    <div>{{lastName}}</div>
+    <div>{{age}}</div>
+    <hr/>
+</div>
+```
+In js:
+```
+persons: [
+    {name: 'John',lastName: 'Doe',age:55},
+    {name: 'Jim',lastName: 'Stranger',age:28},
+    {name: 'Frank',lastName: 'Moon',age:67}
+]
+```
+From persons model property available array methods like push, pop, splice, shift, unshift for change model and automaticly change quantity of template. (No redrawing, only add\remove nodes). Also availble additional methods: query and resetQuery.
+
+### Query
+
+query method - show\hide template elements for something query in model property. Example:
+
+```
+//We have a persons model property of previous example... 
+this.model.persons.query({name:'John'}); // Show template with items when name is 'John'
+this.model.persons.query({name:/J/i}); // Show template with items when name have "J" or 'j' symbol
+this.model.persons.resetQuery(); // Show all
+```
+
 
 
 
