@@ -97,6 +97,8 @@ Value attribute, in the main, bind some input node like input or textarea with c
 
 That code bind "name" model property with this node.
 
+// See more example in index.html of this repo.
+
 
 
 
