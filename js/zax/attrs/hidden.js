@@ -1,10 +1,10 @@
 define([
     "dojo/_base/declare",
-    "zax/polyfills/getComputedStyle",
-    "dojo/dom-attr",
-    "dojo/on"
+    "dojo/dom-class",
+    "zax/polyfills/getComputedStyle"
+
 ],
-    function (declare,domAttr,on) {
+    function (declare,domClass,getCompStyles) {
         /**
          * Parser entity
          */
@@ -12,9 +12,10 @@ define([
             hidden: function(p,o,n){
                 this.attrExecutor();
                 // IE hidden Polyfill
+                if(!!n) domClass.add(this.node,'hide'); else domClass.remove(this.node,'hide');
                 if(/MSIE (8|9|10)/.test(window.navigator.userAgent)){
                     this.startDisplay = this.startDisplay || getComputedStyle(this.node).display;
-                    this.node.style.display = n ? this.startDisplay=='none' ? 'block' : this.startDisplay : 'none';
+                    this.node.style.display = n ? 'none' : this.startDisplay ? this.startDisplay : 'block';
                 }
             }
         });

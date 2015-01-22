@@ -8,14 +8,15 @@ define([
     "zax/utils/utils",
     "zax/actions/parse",
     "zax/actions/bind",
+    "zax/actions/bindEvents",
     "zax/utils/watch",
     "zax/polyfills/indexOf"
 ],
-    function (declare,array,lang,domConstruct,domAttr,query,Utils,Parse,Bind) {
+    function (declare,array,lang,domConstruct,domAttr,query,Utils,Parse,Bind,bindEvents) {
         /**
          * Сущность mv.
          */
-        return declare("zax.mv", [Parse,Bind], {
+        return declare("zax.mv", [Parse,Bind,bindEvents], {
             options: null,
             baseNode: null,
             currentNode: null,
@@ -69,6 +70,7 @@ define([
                 this.getNodes(node);
                 this.bind(node);
                 this.basicSet(node);
+                this.bindEvents(node);
             },
             getModelProperties: function(expression,zaxNode){
                 var self = this;

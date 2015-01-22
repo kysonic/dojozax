@@ -25,30 +25,32 @@ define([
                     self.mv.injectBoundHTML(self.node.data.template,container,item);
                     self.node.appendChild(container);
                     self.mv.model[p][i] = container.context;
+                    container.sn = i;
                     //utils.unWarp(container);
                     i++;
                 });
                 this.decorateArrayMethods(self.mv.model[p],p);
             },
-            decorateArrayMethods: function(array,modelProperty){
+            decorateArrayMethods: function(arry,modelProperty){
                 var self = this;
-                utils.decorateMethod(array,'push',function(args){
+                utils.decorateMethod(arry,'push',function(args){
                     var container = domConstruct.create(self.zEachWarp);
                     self.mv.injectBoundHTML(self.node.data.template,container,args[0]);
                     self.node.appendChild(container);
                     return container;
                 },function(container){
                     self.mv.model[modelProperty][self.mv.model[modelProperty].length-1] = container.context;
+                    container.sn = self.mv.model[modelProperty].length-1;
                    // utils.unWarp(container);
                 });
-                utils.decorateMethod(array,'pop',function(args){
+                utils.decorateMethod(arry,'pop',function(args){
                     var items = query(' > '+self.zEachWarp,self.node);
                     query('*[z-bind]', items[items.length-1]).forEach(function(childNode) {
                           self.mv.removeBoundNode(childNode);
                     });
                     domConstruct.destroy(items[items.length-1]);
                 });
-                utils.decorateMethod(array,'splice',function(args){
+                utils.decorateMethod(arry,'splice',function(args){
                     var items = query(' > '+self.zEachWarp,self.node);
                     for(var i=args[0]; i<args[0]+(args[1]!=undefined ? args[1] : 1); i++) {
                         if(items[i]){
@@ -63,10 +65,9 @@ define([
                     }
                     return true;
                 },function(){
-
                     self.reassignment(modelProperty);
                 });
-                utils.decorateMethod(array,'shift',function(args){
+                utils.decorateMethod(arry,'shift',function(args){
                     var items = query(' > '+self.zEachWarp,self.node);
                     query('*[z-bind]', items[0]).forEach(function(childNode) {
                         self.mv.removeBoundNode(childNode);
@@ -75,7 +76,7 @@ define([
                 },function(){
                     self.reassignment(modelProperty);
                 });
-                utils.decorateMethod(array,'unshift',function(args){
+                utils.decorateMethod(arry,'unshift',function(args){
                     var container = domConstruct.create(self.zEachWarp);
                     self.mv.injectBoundHTML(self.node.data.template,container,args[0]);
                     self.node.appendChild(container);
@@ -83,11 +84,43 @@ define([
                 },function(){
                     self.reassignment(modelProperty);
                 });
+                /**
+                 * Query method. Additional method for z-each model property;
+                 * @param query
+                 */
+                arry['query'] = function(qry){
+                    var result = [];
+                    for(var key in this) {
+                        var item = this[key];
+                        if(typeof item !='function'){
+                            var counter = 0;
+                            for(var k in qry){
+                                var property = qry[k];
+                                if(item[k]==property || (property.test && property.test(item[k]))) counter++;
+                            }
+                            if(counter==utils.objectSize(qry)) result.push(key);
+                        }
+                    }
+                    query(' > '+self.zEachWarp,self.node).forEach(function(item,key){
+                        item.oldDisplayStyle = item.oldDisplayStyle || getComputedStyle(item).display;
+                        item.style.display = 'none';
+                    });
+                    array.forEach(result,function(item){
+                        var node = query(' > '+self.zEachWarp,self.node)[item];
+                        node.style.display = node.oldDisplayStyle;
+                    });
+                }
+                arry['resetQuery'] = function(){
+                    query(' > '+self.zEachWarp,self.node).forEach(function(item,key){
+                        item.style.display = item.oldDisplayStyle || 'block';
+                    });
+                }
             },
             reassignment: function(modelProperty){
                 var self = this;
                 query(' > '+self.zEachWarp,self.node).forEach(function(item,key){
                     self.mv.model[modelProperty][key] = item.context;
+                    item.sn = key;
                 });
             }
         });

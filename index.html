@@ -16,6 +16,8 @@
 <div id="b-wrapper" data-dojo-type="app/zax">
     <label>Wrapped expression</label>
     <div id="binding">{{name}}</div>
+    <label>Filters expression</label>
+    <div id="filters">{{name | upper}}</div>
     <label>Keyboard Input Group</label><br/>
     <input id="name-input" type="text" value="{{name}}"/><br/>
     <textarea id="textarea" cols="30" value="{{text}}" rows="10"></textarea><br/>
@@ -29,7 +31,18 @@
     <select name="select" value="{{select}}" id="select">
         <option value="one">1</option>
         <option id="select-two" value="two">2</option>
-    </select>
+    </select><br/><br/>
+    <label>zIF Group</label><br/>
+    <div z-if="{{ifData}}">
+        Added content with {{name}} model property.
+    </div><br/>
+    <label>zEach Group</label><br/>
+    <div z-each="{{persons}}">
+        <div>{{name}}</div><div>{{lastName}}</div><div>{{age}}</div>
+        <hr/>
+    </div>
+    <label>Bind events Group</label><br/>
+    <div z-click="{{clicker}}">BUTTON</div>
 </div>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js"></script>

@@ -13,6 +13,15 @@ exports.run =
                     });
                 });
             });
+            test.it('Filters', function() {
+                driver.get('http://dojozax/').then(function(){
+                    driver.executeScript(function() {
+                        return document.querySelector('#filters > div').innerHTML;
+                    }).then(function(innerHTML) {
+                        assert.equal(innerHTML,'JOHN');
+                    });
+                });
+            });
             test.it('Change model params', function() {
                 driver.get('http://dojozax/').then(function(){
                     driver.executeScript(function() {
@@ -70,13 +79,13 @@ exports.run =
                         driver.executeScript(function() {
                             return document.querySelector('#checkbox').checked;
                         }).then(function(checked) {
-                            assert.equal(checked,false);
+                            assert.equal(checked,false,'Changing model property not change a node');
                         });
                         driver.findElement({id:'checkbox'}).click();
                         driver.executeScript(function() {
                             return window.app.model.check;
                         }).then(function(checked) {
-                            assert.equal(checked,true);
+                            assert.equal(checked,true,'Click on element dont change model');
                         });
                     });
                 });
@@ -89,13 +98,13 @@ exports.run =
                         driver.executeScript(function() {
                             return document.querySelector('#radio1').checked;
                         }).then(function(checked) {
-                            assert.equal(checked,true);
+                            assert.equal(checked,true,'Changing model property not change a node');
                         });
                         driver.findElement({id:'radio2'}).click();
                         driver.executeScript(function() {
                             return window.app.model.radio;
                         }).then(function(checked) {
-                            assert.equal(checked,2);
+                            assert.equal(checked,2,'Click on second radio don"t change model');
                         });
                     });
                 });
@@ -108,14 +117,14 @@ exports.run =
                         driver.executeScript(function() {
                             return document.querySelector('#select').value;
                         }).then(function(value) {
-                            assert.equal(value,'one');
+                            assert.equal(value,'one','Changing model property not change a node');
                         });
                         driver.findElement({id:'select'}).findElement({id:"select-two"}).click();
                         driver.sleep(1000);
                         driver.executeScript(function() {
                             return window.app.model.select;
                         }).then(function(value) {
-                            assert.equal(value,'two');
+                            assert.equal(value,'two','Select option not change model property.');
                         });
                     });
                 });

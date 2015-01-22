@@ -97,3 +97,19 @@ header {
 .disabled{
     opacity: 0.2;
 }
+#todos .text,#todos .remove {
+    display: inline-block;
+    font-size: 18px;
+}
+.add,.remove {
+    display: inline-block;
+    padding: 3px 10px 5px 10px;
+    border: 1px solid #5f6161;
+    color: #5f6161;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.hide  {
+    display: none !important;
+}

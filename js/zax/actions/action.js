@@ -32,8 +32,25 @@ define([
             execute: function(mv,p,o,n){
                 var self = this;
                 this.mv = mv;
-                if(this.attr) if(typeof this[this.attr]=='function') this[this.attr](p,o,n); else this.attrExecutor(p,o,n);
+                if(this.attr) if(typeof this[this.attr]=='function') this[this.attr](p,o,this.evaluateNew(n)); else this.attrExecutor(p,o,n);
                 if(this.innerText) this.innerTextExecutor(p,o,n);
+            },
+            evaluateNew: function(n){
+                var filter = Utils.deleteMustaches(this.expression).split('|');
+                if(!filter[1]) with (this.context._context) {
+                    try{
+                        return eval(lang.trim(filter[0]).replace(this.model,n));
+                    }catch(e) {
+                        return n
+                    }
+                }
+                if(this.mv.filters[lang.trim(filter[1])]) with (this.context._context) {
+                    try{
+                        return this.mv.filters[lang.trim(filter[1])](eval(lang.trim(filter[0]).replace(this.model,n)));
+                    }catch(e) {
+                        return n
+                    }
+                }
             },
             evaluateExpression: function(){
                 var filter = Utils.deleteMustaches(this.expression).split('|');
