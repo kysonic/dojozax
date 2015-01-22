@@ -233,6 +233,16 @@ When widget is loading of him wrapper added widget-loading css class. Use that f
 
 //Se more example in widget.html file of this repo.
 
+#Run Tests
+
+For tests i use selenium-webdriver and mocha. 
+
+```
+npm install
+cd mocha
+mocha --reporter spec --ui bdd --timeout 1200000 --slow 1000 setup
+```
+
 
 
 
