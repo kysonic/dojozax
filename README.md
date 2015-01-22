@@ -218,6 +218,19 @@ List of available attributes z-
 
 // See more example in index.html of this repo.
 
+#Widgets
+
+You can use in your dojo zax app dojo [widgets](http://dojotoolkit.org/reference-guide/1.10/quickstart/writingWidgets.html). For this you enough add z-widget attribute with needed widget include path.
+
+```
+{{time}}
+<div value="{{time}}" z-widget="dijit/form/TimeTextBox">TIME WIDGET</div>
+```
+
+List of supported widgets: "dijit/form/TimeTextBox","dijit/form/DateTextBox","dijit/form/Select","dijit/form/ComboBox","dijit/form/CheckBox", "dijit/form/TextBox", "dijit/form/ValidationTextBox"
+
+When widget is loading of him wrapper added widget-loading css class. Use that for creating widget loading bars.
+
 
 
 
