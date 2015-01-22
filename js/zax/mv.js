@@ -9,14 +9,15 @@ define([
     "zax/actions/parse",
     "zax/actions/bind",
     "zax/actions/bindEvents",
+    "zax/actions/zWidget",
     "zax/utils/watch",
     "zax/polyfills/indexOf"
 ],
-    function (declare,array,lang,domConstruct,domAttr,query,Utils,Parse,Bind,bindEvents) {
+    function (declare,array,lang,domConstruct,domAttr,query,Utils,Parse,Bind,bindEvents,zWidget) {
         /**
          * Сущность mv.
          */
-        return declare("zax.mv", [Parse,Bind,bindEvents], {
+        return declare("zax.mv", [Parse,Bind,bindEvents,zWidget], {
             options: null,
             baseNode: null,
             currentNode: null,
@@ -71,6 +72,7 @@ define([
                 this.bind(node);
                 this.basicSet(node);
                 this.bindEvents(node);
+                this.zWidget(node);
             },
             getModelProperties: function(expression,zaxNode){
                 var self = this;
@@ -108,7 +110,7 @@ define([
             },
             removeBoundNode: function(node){
                 if(!node) return console.error('Removed node not found!');
-                if(node.actionNode.actions){
+                if(node.actionNode && node.actionNode.actions){
                     for (var property in node.actionNode.actions) {
                         var actionSet = node.actionNode.actions[property];
                         array.forEach(node.actions,function(action) {
@@ -122,6 +124,7 @@ define([
                     }
                 }
                 node.actions = null;
+                if(node.widget) node.widget.destroy();
                 for(var eventName in node.bindEvents) {
                     node.bindEvents[eventName].remove;
                 }

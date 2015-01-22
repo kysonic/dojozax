@@ -8,14 +8,13 @@ define([
     "zax/attrs/checked",
     "zax/attrs/hidden",
     "zax/attrs/z-if",
-    "zax/attrs/z-each",
-    "zax/attrs/z-widget"
+    "zax/attrs/z-each"
 ],
-    function (declare,domAttr,lang,array,Utils,value,checked,hidden,zIf,zEach,zWidget) {
+    function (declare,domAttr,lang,array,Utils,value,checked,hidden,zIf,zEach) {
         /**
          * Parser entity
          */
-        return declare("Action", [value,checked,hidden,zIf,zEach,zWidget], {
+        return declare("Action", [value,checked,hidden,zIf,zEach], {
             node: {},
             attr: '',
             innerText: false,

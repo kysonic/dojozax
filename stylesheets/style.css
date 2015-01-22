@@ -12,7 +12,7 @@ hr {
     width: 200px;
     border-style: dashed;
 }
-input {
+input:not(.dijitInputInner) {
     width: auto;
     height: 30px;
 }
@@ -112,4 +112,7 @@ header {
 }
 .hide  {
     display: none !important;
+}
+.widget-load {
+    background: red;
 }
