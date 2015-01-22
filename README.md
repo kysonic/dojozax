@@ -227,9 +227,11 @@ You can use in your dojo zax app dojo [widgets](http://dojotoolkit.org/reference
 <div value="{{time}}" z-widget="dijit/form/TimeTextBox">TIME WIDGET</div>
 ```
 
-List of supported widgets: "dijit/form/TimeTextBox","dijit/form/DateTextBox","dijit/form/Select","dijit/form/ComboBox","dijit/form/CheckBox", "dijit/form/TextBox", "dijit/form/ValidationTextBox"
+List of supported widgets: "dijit/form/TimeTextBox","dijit/form/DateTextBox","dijit/form/Select","dijit/form/ComboBox","dijit/form/CheckBox", "dijit/form/TextBox", "dijit/form/ValidationTextBox", "dijit/form/RadioButton"
 
 When widget is loading of him wrapper added widget-loading css class. Use that for creating widget loading bars.
+
+//Se more example in widget.html file of this repo.
 
 
 
