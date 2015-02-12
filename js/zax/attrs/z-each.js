@@ -1,12 +1,12 @@
 define([
-    "dojo/_base/declare",
-    "dojo/_base/lang",
-    "dojo/_base/array",
-    "dojo/query",
-    "dojo/dom-construct",
-    "dojo/dom-attr",
-    "zax/utils/utils"
-],
+        "dojo/_base/declare",
+        "dojo/_base/lang",
+        "dojo/_base/array",
+        "dojo/query",
+        "dojo/dom-construct",
+        "dojo/dom-attr",
+        "zax/utils/utils"
+    ],
     function (declare,lang,array,query,domConstruct,domAttr,utils) {
         /**
          * Parser entity
@@ -20,16 +20,23 @@ define([
                 });
                 var i = 0;
                 this.zEachWarp = domAttr.get(this.node,'z-warp') || this.zEachWarp;
+                /**
+                 * After Append
+                 */
+                var afterAppendName = domAttr.get(self.node,'z-after-append');
+                var f = afterAppendName && this.mv[afterAppendName.replace('{{','').replace('}}','')] ?
+                    this.mv[afterAppendName.replace('{{','').replace('}}','')] : null;
                 array.forEach(n,function(item){
                     var container = domConstruct.create(self.zEachWarp);
                     self.mv.injectBoundHTML(self.node.data.template,container,item);
                     self.node.appendChild(container);
-                    self.mv.model[p][i] = container.context;
+                    self.context[p][i] = container.context;
                     container.sn = i;
+                    if(f) f.call(self.mv,container);
                     //utils.unWarp(container);
                     i++;
                 });
-                this.decorateArrayMethods(self.mv.model[p],p);
+                this.decorateArrayMethods(self.context[p],p);
             },
             decorateArrayMethods: function(arry,modelProperty){
                 var self = this;
@@ -39,14 +46,14 @@ define([
                     self.node.appendChild(container);
                     return container;
                 },function(container){
-                    self.mv.model[modelProperty][self.mv.model[modelProperty].length-1] = container.context;
-                    container.sn = self.mv.model[modelProperty].length-1;
-                   // utils.unWarp(container);
+                    self.context[modelProperty][self.context[modelProperty].length-1] = container.context;
+                    container.sn = self.context[modelProperty].length-1;
+                    // utils.unWarp(container);
                 });
                 utils.decorateMethod(arry,'pop',function(args){
                     var items = query(' > '+self.zEachWarp,self.node);
                     query('*[z-bind]', items[items.length-1]).forEach(function(childNode) {
-                          self.mv.removeBoundNode(childNode);
+                        self.mv.removeBoundNode(childNode);
                     });
                     domConstruct.destroy(items[items.length-1]);
                 });
@@ -119,7 +126,7 @@ define([
             reassignment: function(modelProperty){
                 var self = this;
                 query(' > '+self.zEachWarp,self.node).forEach(function(item,key){
-                    self.mv.model[modelProperty][key] = item.context;
+                    self.context[modelProperty][key] = item.context;
                     item.sn = key;
                 });
             }

@@ -1,8 +1,10 @@
 define([
         "dojo/_base/declare",
+        "dojo/dom-construct",
+        "dojo/query",
         "zax/mv"
     ],
-    function (declare,mv) {
+    function (declare,domConstruct,query,mv) {
         return declare("Widget", mv, {
             options: null,
             model: {
@@ -18,6 +20,7 @@ define([
                     {date:'10.02.2015'},
                     {date:'10.03.2015'}
                 ]
+
             },
             constructor: function (options, node) {
                 var self = this;

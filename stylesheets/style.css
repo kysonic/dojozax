@@ -12,7 +12,7 @@ hr {
     width: 200px;
     border-style: dashed;
 }
-input:not(.dijitInputInner) {
+input {
     width: auto;
     height: 30px;
 }

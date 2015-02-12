@@ -10,7 +10,10 @@ define([
             model: {
                 name: 'John',
                 text: 'Lorem ipsum dolor sit amet',
-                age: 25,
+                age: {
+                    age:21,
+                    oldAge:22
+                },
                 hide: true,
                 check: true,
                 radio: '2',

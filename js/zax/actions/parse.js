@@ -3,9 +3,10 @@ define([
     "dojo/_base/lang",
     "dojo/query",
     "dojo/dom-construct",
+    "dojo/dom-attr",
     "zax/utils/utils"
 ],
-    function (declare,lang,query,domConstruct,Utils) {
+    function (declare,lang,query,domConstruct,domAttr,Utils) {
         /**
          * Parser entity
          */
@@ -20,13 +21,22 @@ define([
             parse: function(zaxNode){
                 var self = this;
                 //Collect Templates
-                query('*[z-if]', zaxNode).forEach(function (node) {
-                    self.templates.zIf.push(lang.trim(node.innerHTML));
-                    domConstruct.empty(node);
-                });
+                zaxNode.zaxUid = Utils.createUID();
+                domAttr.set(zaxNode,'data-zax-uid',zaxNode.zaxUid);
                 query('*[z-each]', zaxNode).forEach(function (node) {
-                    self.templates.zEach.push(lang.trim(node.innerHTML));
-                    domConstruct.empty(node);
+                    self.templates.zEach[zaxNode.zaxUid] = self.templates.zEach[zaxNode.zaxUid] || [];
+                    self.templates.zEach[zaxNode.zaxUid].push(lang.trim(node.innerHTML));
+                    //domConstruct.empty(node);
+                });
+                query('*[z-if]', zaxNode).forEach(function (node) {
+                    self.templates.zIf[zaxNode.zaxUid] = self.templates.zIf[zaxNode.zaxUid] || [];
+                    self.templates.zIf[zaxNode.zaxUid].push(lang.trim(node.innerHTML));
+                    //domConstruct.empty(node);
+                });
+                query('*[z-context]', zaxNode).forEach(function (node) {
+                    self.templates.zContext[zaxNode.zaxUid] = self.templates.zContext[zaxNode.zaxUid] || [];
+                    self.templates.zContext[zaxNode.zaxUid].push(lang.trim(node.innerHTML));
+                   //domConstruct.empty(node);
                 });
                 // Basic parsing
                 zaxNode.template = zaxNode.innerHTML;
@@ -39,14 +49,20 @@ define([
                 var i = 0;
                 query('*[z-if]', zaxNode).forEach(function (node) {
                     node.data = {};
-                    node.data.template = self.templates.zIf[i];
+                    node.data.template = self.templates.zIf[zaxNode.zaxUid][i];
                     i++;
                 });
                 // Each
                 i=0;
                 query('*[z-each]', zaxNode).forEach(function (node) {
                     node.data = {};
-                    node.data.template = self.templates.zEach[i];
+                    node.data.template = self.templates.zEach[zaxNode.zaxUid][i];
+                    i++;
+                });
+                i=0;
+                query('*[z-context]', zaxNode).forEach(function (node) {
+                    node.data = {};
+                    node.data.template = self.templates.zContext[zaxNode.zaxUid][i];
                     i++;
                 });
             }

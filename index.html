@@ -16,6 +16,9 @@
 <div id="b-wrapper" data-dojo-type="app/zax">
     <label>Wrapped expression</label>
     <div id="binding">{{name}}</div>
+    <div z-context="{{age}}">
+        {{age}}
+    </div>
     <label>Filters expression</label>
     <div id="filters">{{name | upper}}</div>
     <label>Keyboard Input Group</label><br/>

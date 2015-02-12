@@ -8,13 +8,14 @@ define([
     "zax/attrs/checked",
     "zax/attrs/hidden",
     "zax/attrs/z-if",
-    "zax/attrs/z-each"
+    "zax/attrs/z-each",
+    "zax/attrs/z-context"
 ],
-    function (declare,domAttr,lang,array,Utils,value,checked,hidden,zIf,zEach) {
+    function (declare,domAttr,lang,array,Utils,value,checked,hidden,zIf,zEach,zContext) {
         /**
          * Parser entity
          */
-        return declare("Action", [value,checked,hidden,zIf,zEach], {
+        return declare("Action", [value,checked,hidden,zIf,zEach,zContext], {
             node: {},
             attr: '',
             innerText: false,
@@ -38,14 +39,17 @@ define([
                 var filter = Utils.deleteMustaches(this.expression).split('|');
                 if(!filter[1]) with (this.context._context) {
                     try{
-                        return eval(lang.trim(filter[0]).replace(this.model,n));
+                        var value = typeof n.toLowerCase()=='string' ? "'"+n+"'" : n;
+                        return eval(lang.trim(filter[0]).replace(this.model,value));
                     }catch(e) {
+
                         return n
                     }
                 }
                 if(this.mv.filters[lang.trim(filter[1])]) with (this.context._context) {
                     try{
-                        return this.mv.filters[lang.trim(filter[1])](eval(lang.trim(filter[0]).replace(this.model,n)));
+                        var value = typeof n.toLowerCase()=='string' ? "'"+n+"'" : n;
+                        return this.mv.filters[lang.trim(filter[1])](eval(lang.trim(filter[0]).replace(this.model,value)),this.node);
                     }catch(e) {
                         return n
                     }

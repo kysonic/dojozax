@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/resources/dojo.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dijit/themes/claro/claro.css">
+</head>
+<body class="claro">
+<header>
+    <div class="b-header">
+        <div class="b-logo">ZAX</div>
+    </div>
+</header>
+<div id="b-wrapper" data-dojo-type="app/multi">
+    <div z-context="{{context}}">
+        {{name}}
+        <div z-if="{{age=='25'}}">
+            {{name}}
+        </div>
+    </div>
+    <div z-each="{{persons}}">
+        {{name}}
+        Address:
+        <div z-context="{{address}}">
+            <div z-if="{{city=='Taganrog'}}">
+                {{country}}
+            </div>
+        </div>
+        <ul z-warp="li" z-each="{{children}}">
+            {{name}}
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js"></script>
+</body>
+</html>

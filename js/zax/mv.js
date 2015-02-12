@@ -24,8 +24,9 @@ define([
             currentContext: {},
             $:{},
             templates: {
-                zIf:[],
-                zEach:[]
+                zIf:{},
+                zEach:{},
+                zContext: {}
             },
             /**
              * Constructor

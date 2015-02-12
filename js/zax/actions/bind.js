@@ -73,6 +73,7 @@ define([
                         var currentNode = zaxNode.linkActionNode ? zaxNode.linkActionNode : zaxNode;
                         currentNode.context.watch(property, function (p, o, n) {
                             currentNode.context._context[p] = n;
+                            if(self[p+'Changed']) self[p+'Changed'].call(self,o,n);
                             array.forEach(currentNode.actions[p],function(item){
                                 if(item) item.execute(self,p, o, n);
                                 return n;
