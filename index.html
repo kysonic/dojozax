@@ -13,41 +13,22 @@
         <div class="b-logo">ZAX</div>
     </div>
 </header>
-<div id="b-wrapper" data-dojo-type="app/zax">
-    <label>Wrapped expression</label>
-    <div id="binding">{{name}}</div>
-    <div z-context="{{age}}">
-        {{age}}
+<div id="b-wrapper">
+    <hr>
+    <div z-each="{{persons}}" z-bind>
+        <input type="text" value="{{name}}" z-bind/>
     </div>
-    <label>Filters expression</label>
-    <div id="filters">{{name | upper}}</div>
-    <label>Keyboard Input Group</label><br/>
-    <input id="name-input" type="text" value="{{name}}"/><br/>
-    <textarea id="textarea" cols="30" value="{{text}}" rows="10"></textarea><br/>
-    <div id="hidden" hidden="{{hide}}">HIDDEN CONTENT</div>
-    <label>Checkbox Group</label><br/>
-    <input id="checkbox" type="checkbox" value="{{check}}"/><br/>
-    <label>RadioButton Group</label><br/>
-    <input id="radio1" type="radio" checked="{{radio == '1'}}" value="1" name="radioGroup"/>
-    <input id="radio2" type="radio" checked="{{radio == '2'}}" value="2" name="radioGroup"/><br/>
-    <label>Select Group</label><br/>
-    <select name="select" value="{{select}}" id="select">
-        <option value="one">1</option>
-        <option id="select-two" value="two">2</option>
-    </select><br/><br/>
-    <label>zIF Group</label><br/>
-    <div z-if="{{ifData}}">
-        Added content with {{name}} model property.
-    </div><br/>
-    <label>zEach Group</label><br/>
-    <div z-each="{{persons}}">
-        <div>{{name}}</div><div>{{lastName}}</div><div>{{age}}</div>
-        <hr/>
-    </div>
-    <label>Bind events Group</label><br/>
-    <div z-click="{{clicker}}">BUTTON</div>
+    <span z-wrap="span" z-each="{{persons}}" z-bind>
+      <input type="text" value="{{name}}" z-bind/>
+    </span>
+
 </div>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js"></script>
+<script type="text/javascript">
+    require(["app/index"], function(Index){
+        var index = new Index({},document.querySelector('#b-wrapper'))
+    });
+</script>
 </body>
 </html>

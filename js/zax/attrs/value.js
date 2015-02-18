@@ -10,6 +10,9 @@ define([
          * Parser entity
          */
         return declare("value", null, {
+            constructor: function(action){
+                declare.safeMixin(this,action);
+            },
             value: function(){
                 this.attrExecutor();
                 if(this.valueBinding[this.node.tagName.toLowerCase()+'Binding']) this.valueBinding[this.node.tagName.toLowerCase()+'Binding'].call(this);
@@ -33,8 +36,8 @@ define([
                 textInputBinding: function(){
                     var self = this;
                     var event = /MSIE (8|9)/.test(window.navigator.userAgent) ? 'keyup' : 'input';
-                    if(this.node.bindEvents && !this.node.bindEvents[event]){
-                        this.node.bindEvents[event]= on(this.node,event,function(event){
+                    if(this.node.bindData.bindEvents && !this.node.bindData.bindEvents[event]){
+                        this.node.bindData.bindEvents[event]= on(this.node,event,function(event){
                             lang.setObject(self.model,event.target.value,self.context);
                         });
                     }
@@ -43,8 +46,8 @@ define([
                     var self = this;
                     var event = /MSIE 8/.test(window.navigator.userAgent) ? 'click' : 'change';
                     this.node.checked = this.context._context[this.model];
-                    if(!this.node.bindEvents[event]){
-                        this.node.bindEvents[event]= on(this.node,event,function(event){
+                    if(!this.node.bindData.bindEvents[event]){
+                        this.node.bindData.bindEvents[event]= on(this.node,event,function(event){
                             lang.setObject(self.model,event.target.checked,self.context);
                         });
                     }
@@ -52,8 +55,8 @@ define([
                 selectBinding: function(){
                     var self = this;
                     var event = 'change';
-                    if(!this.node.bindEvents[event]){
-                        this.node.bindEvents[event]= on(this.node,event,function(event){
+                    if(!this.node.bindData.bindEvents[event]){
+                        this.node.bindData.bindEvents[event]= on(this.node,event,function(event){
                             lang.setObject(self.model,event.target.value,self.context);
                         });
                     }
@@ -61,8 +64,8 @@ define([
                 textareaBinding: function(){
                     var self = this;
                     var event = /MSIE (8|9)/.test(window.navigator.userAgent) ? 'keyup' : 'input';
-                    if(!this.node.bindEvents[event]){
-                        this.node.bindEvents[event]= on(this.node,event,function(event){
+                    if(!this.node.bindData.bindEvents[event]){
+                        this.node.bindData.bindEvents[event]= on(this.node,event,function(event){
                             lang.setObject(self.model,event.target.value,self.context);
                         });
                     }

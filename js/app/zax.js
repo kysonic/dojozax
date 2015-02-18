@@ -33,10 +33,10 @@ define([
             constructor: function (options, node) {
                 var self = this;
                 window.app = this;
-                this.model.persons.query({name:/Jim/i});
+                /*this.model.persons.query({name:/Jim/i});
                 setTimeout(function(){
                     self.model.persons.resetQuery();
-                },2000);
+                },2000);*/
             },
             clicker: function(e){
                 console.log(this,e);

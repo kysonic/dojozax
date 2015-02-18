@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/resources/dojo.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dijit/themes/claro/claro.css">
+</head>
+<body class="claro">
+<header>
+    <div class="b-header">
+        <div class="b-logo">ZAX</div>
+    </div>
+</header>
+<div id="b-wrapper">
+    <label>Wrapped expression</label>
+    <div id="binding" z-bind>{{name}}</div>
+    <div z-context="{{age}}" z-bind>
+        <div z-bind>{{age}}</div>
+    </div>
+    <label>Filters expression</label>
+    <div id="filters" z-bind>{{name # upper}}</div>
+    <label>Keyboard Input Group</label><br/>
+    <input id="name-input" type="text" value="{{name}}" z-bind /><br/>
+    <textarea id="textarea" cols="30" value="{{text}}" rows="10" z-bind></textarea><br/>
+    <div id="hidden" z-bind z-hide="{{hide}}">HIDDEN CONTENT</div>
+    <label>Checkbox Group</label><br/>
+    <input id="checkbox" type="checkbox" z-bind value="{{check}}"/><br/>
+    <!--<label>RadioButton Group</label><br/>
+    <input id="radio1" type="radio" z-bind checked="{{radio == '1'}}" value="1" name="radioGroup"/>
+    <input id="radio2" type="radio" z-bind checked="{{radio == '2'}}" value="2" name="radioGroup"/><br/>-->
+    <label>Select Group</label><br/>
+    <select name="select" z-bind value="{{select}}" id="select">
+        <option value="one">1</option>
+        <option id="select-two" value="two">2</option>
+    </select><br/><br/>
+    <label>zIF Group</label><br/>
+    <div z-if="{{ifData}}" z-bind>
+        Added content with <span z-bind>{{name}}</span> model property.
+    </div><br/>
+    <label>zEach Group</label><br/>
+    <div z-each="{{persons}}" z-bind>
+        <div z-bind>{{name}}</div><div z-bind>{{lastName}}</div><div z-bind>{{age}}</div>
+        <hr/>
+    </div>
+    <label>Bind events Group</label><br/>
+    <div z-event="{{clicker#click}}" z-bind>BUTTON</div>
+</div>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js"></script>
+<script type="text/javascript">
+    require(["app/zax"], function(Zax){
+        var zax = new Zax({},document.querySelector('#b-wrapper'));
+    });
+</script>
+</body>
+</html>

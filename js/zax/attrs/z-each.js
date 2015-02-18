@@ -13,6 +13,10 @@ define([
          */
         return declare("zEach", null, {
             zEachWarp: 'div',
+            arrayMethods: ['push','pop','slice','shift','unshift'],
+            constructor: function(action){
+                declare.safeMixin(this,action);
+            },
             "z-each": function(p,o,n){
                 var self = this;
                 query(' > *', this.node).forEach(function(node) {
@@ -26,28 +30,34 @@ define([
                 var afterAppendName = domAttr.get(self.node,'z-after-append');
                 var f = afterAppendName && this.mv[afterAppendName.replace('{{','').replace('}}','')] ?
                     this.mv[afterAppendName.replace('{{','').replace('}}','')] : null;
+
                 array.forEach(n,function(item){
                     var container = domConstruct.create(self.zEachWarp);
-                    self.mv.injectBoundHTML(self.node.data.template,container,item);
+                    self.mv.injectBoundHTML(self.node.bindData.template,container,item);
                     self.node.appendChild(container);
                     self.context[p][i] = container.context;
                     container.sn = i;
+                    domAttr.set(container,'data-zax-model',p);
                     if(f) f.call(self.mv,container);
                     //utils.unWarp(container);
                     i++;
                 });
-                this.decorateArrayMethods(self.context[p],p);
+                this.decorateArrayMethods(self.context[p],p,o,n);
+                //this.quickDecorator(self.context[p],p);
             },
-            decorateArrayMethods: function(arry,modelProperty){
+            decorateArrayMethods: function(arry,modelProperty,o,n){
                 var self = this;
                 utils.decorateMethod(arry,'push',function(args){
                     var container = domConstruct.create(self.zEachWarp);
-                    self.mv.injectBoundHTML(self.node.data.template,container,args[0]);
+                    self.mv.injectBoundHTML(self.node.bindData.template,container,args[0]);
                     self.node.appendChild(container);
                     return container;
                 },function(container){
                     self.context[modelProperty][self.context[modelProperty].length-1] = container.context;
                     container.sn = self.context[modelProperty].length-1;
+                    domAttr.set(container,'data-zax-mark',modelProperty+'-'+container.sn);
+                    domAttr.set(container,'data-zax-model',modelProperty);
+                    if(self.mv[modelProperty+'Changed']) self.mv[modelProperty+'Changed'].call(self.mv,o,n);
                     // utils.unWarp(container);
                 });
                 utils.decorateMethod(arry,'pop',function(args){
@@ -56,6 +66,7 @@ define([
                         self.mv.removeBoundNode(childNode);
                     });
                     domConstruct.destroy(items[items.length-1]);
+                    if(self.mv[modelProperty+'Changed']) self.mv[modelProperty+'Changed'].call(self.mv,o,n);
                 });
                 utils.decorateMethod(arry,'splice',function(args){
                     var items = query(' > '+self.zEachWarp,self.node);
@@ -73,6 +84,7 @@ define([
                     return true;
                 },function(){
                     self.reassignment(modelProperty);
+                    if(self.mv[modelProperty+'Changed']) self.mv[modelProperty+'Changed'].call(self.mv,o,n);
                 });
                 utils.decorateMethod(arry,'shift',function(args){
                     var items = query(' > '+self.zEachWarp,self.node);
@@ -85,11 +97,15 @@ define([
                 });
                 utils.decorateMethod(arry,'unshift',function(args){
                     var container = domConstruct.create(self.zEachWarp);
-                    self.mv.injectBoundHTML(self.node.data.template,container,args[0]);
+                    self.mv.injectBoundHTML(self.node.bindData.template,container,args[0]);
                     self.node.appendChild(container);
                     return true;
-                },function(){
+                },function(container){
                     self.reassignment(modelProperty);
+                    container.sn = 0;
+                    domAttr.set(container,'data-zax-mark',modelProperty+'-'+container.sn);
+                    domAttr.set(container,'data-zax-model',modelProperty);
+                    if(self.mv[modelProperty+'Changed']) self.mv[modelProperty+'Changed'].call(self.mv,o,n);
                 });
                 /**
                  * Query method. Additional method for z-each model property;
@@ -129,6 +145,15 @@ define([
                     self.context[modelProperty][key] = item.context;
                     item.sn = key;
                 });
+            },
+            quickDecorator: function(arry,modelProperty){
+                var self = this;
+                array.forEach(this.arrayMethods,function(method){
+                    utils.decorateMethod(arry,method,function(args){},function(){
+                        console.log('asd')
+                        self.context[modelProperty] = self.context._context[modelProperty];
+                    });
+                })
             }
         });
     }

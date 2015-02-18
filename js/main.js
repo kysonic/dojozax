@@ -3,7 +3,7 @@
  * @type {{Object}} - Base config object
  */
 dojoConfig = {
-    parseOnLoad: true,
+    parseOnLoad: false,
     isDebug: true,
     // Packages
     packages: [

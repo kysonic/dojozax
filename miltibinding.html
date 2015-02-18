@@ -14,24 +14,9 @@
     </div>
 </header>
 <div id="b-wrapper" data-dojo-type="app/multi">
-    <div z-context="{{context}}">
-        {{name}}
-        <div z-if="{{age=='25'}}">
-            {{name}}
-        </div>
-    </div>
-    <div z-each="{{persons}}">
-        {{name}}
-        Address:
-        <div z-context="{{address}}">
-            <div z-if="{{city=='Taganrog'}}">
-                {{country}}
-            </div>
-        </div>
-        <ul z-warp="li" z-each="{{children}}">
-            {{name}}
-        </ul>
-    </div>
+    <ul z-each="{{persons}}" z-warp="li">
+        {{name}}{{age}}
+    </ul>
 </div>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js"></script>

@@ -1,39 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/js/zax/actions/parse.js" line="34" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="9344d1e4-c382-4207-9090-a9152d141df8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/miltibinding.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/app/multi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/zax/attrs/z-context.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/zax/core/bind.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/app/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/zax/attrs/z-disabled.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/zax/attrs/z-hide.js" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\dojozax\js\zax\actions\bind.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\dojozax\js\zax\actions\parse.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\dojozax\js\zax\attrs\checked.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\dojozax\js\zax\attrs\hidden.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\dojozax\js\zax\polyfills\indexOf.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\dojozax\js\zax\utils\trigger.js" afterPath="" />
       <change type="MOVED" beforePath="C:\xampp\htdocs\dojozax\js\zax\actions\action.js" afterPath="$PROJECT_DIR$/js/zax/actions/Action.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/actions/bind.js" afterPath="$PROJECT_DIR$/js/zax/actions/bind.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\dojozax\js\zax\actions\bindEvents.js" afterPath="$PROJECT_DIR$/js/zax/core/bindEvents.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\dojozax\js\zax\actions\zWidget.js" afterPath="$PROJECT_DIR$/js/zax/core/zWidget.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/miltibinding.html" afterPath="$PROJECT_DIR$/miltibinding.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/mv.js" afterPath="$PROJECT_DIR$/js/zax/mv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/actions/parse.js" afterPath="$PROJECT_DIR$/js/zax/actions/parse.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stylesheets/style.css" afterPath="$PROJECT_DIR$/stylesheets/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/utils/utils.js" afterPath="$PROJECT_DIR$/js/zax/utils/utils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/widget.js" afterPath="$PROJECT_DIR$/js/app/widget.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/todos.html" afterPath="$PROJECT_DIR$/todos.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/attrs/value.js" afterPath="$PROJECT_DIR$/js/zax/attrs/value.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/widget.html" afterPath="$PROJECT_DIR$/widget.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/attrs/z-context.js" afterPath="$PROJECT_DIR$/js/zax/attrs/z-context.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/attrs/z-each.js" afterPath="$PROJECT_DIR$/js/zax/attrs/z-each.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/zax/attrs/z-if.js" afterPath="$PROJECT_DIR$/js/zax/attrs/z-if.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/zax.js" afterPath="$PROJECT_DIR$/js/app/zax.js" />
     </list>
     <ignored path="dojo zax.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423730754603" ignored="false" />
-    <file path="$PROJECT_DIR$/../zebra/module/Application/view/application/test/online-source.phtml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423665998309" ignored="false" />
-    <file path="/online-source.phtml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423665998309" ignored="false" />
-    <file path="$PROJECT_DIR$/../zebra/public/js/zinterface/calltracking/onlineSource.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423666069388" ignored="false" />
-    <file path="/onlineSource.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423666043886" ignored="false" />
+    <file path="/Dummy.txt" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424275991758" ignored="false" />
+    <file path="$PROJECT_DIR$/../zebra/module/Application/view/application/test/online-source.phtml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424159014081" ignored="false" />
+    <file path="/online-source.phtml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424159007851" ignored="false" />
+    <file path="$PROJECT_DIR$/../zebra/public/js/zinterface/calltracking/onlineSource.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424159050113" ignored="false" />
+    <file path="/onlineSource.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424159050924" ignored="false" />
     <file path="/onlineSource.less" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423664718572" ignored="false" />
     <file path="$PROJECT_DIR$/../zebra/public/themes/redesign/zinterface/calltracking/onlineSource.less" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423664719836" ignored="false" />
     <file path="$PROJECT_DIR$/../zebra/public/js/zax/actions/bind.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423595164218" ignored="false" />
-    <file path="/bind.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423595126442" ignored="false" />
+    <file path="/bind.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424158627112" ignored="false" />
     <file path="$PROJECT_DIR$/../zebra/public/themes/redesign/build/main.css" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423664747079" ignored="false" />
     <file path="$PROJECT_DIR$/../zebra/public/js/zax/attrs/z-if.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423661159241" ignored="false" />
+    <file path="/miltibinding.html" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423817250797" ignored="false" />
+    <file path="/style.css" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424127482907" ignored="false" />
+    <file path="/index.html" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424131452927" ignored="false" />
+    <file path="/index.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424122913039" ignored="false" />
+    <file path="/z-each.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424156657223" ignored="false" />
+    <file path="$PROJECT_DIR$/../tetproduction/app/views/layouts/default.phtml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423840183739" ignored="false" />
+    <file path="$PROJECT_DIR$/../tetatele/app/views/layouts/default.phtml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423839617883" ignored="false" />
+    <file path="/default.phtml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423839585533" ignored="false" />
+    <file path="$PROJECT_DIR$/../tetatele/.idea/workspace.xml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423841300131" ignored="false" />
+    <file path="$PROJECT_DIR$/../tetproduction/.idea/workspace.xml" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1423841299193" ignored="false" />
+    <file path="/mv.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424125993065" ignored="false" />
+    <file path="/Action.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424128307456" ignored="false" />
+    <file path="/value.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424124464048" ignored="false" />
+    <file path="/main.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424077499895" ignored="false" />
+    <file path="/bindEvents.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424125341386" ignored="false" />
+    <file path="/z-if.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424102740034" ignored="false" />
+    <file path="/z-context.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424102297389" ignored="false" />
+    <file path="/index2.html" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424125348011" ignored="false" />
+    <file path="/zWidget.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424126715751" ignored="false" />
+    <file path="/todos.html" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424127012772" ignored="false" />
+    <file path="/widget.html" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424127291866" ignored="false" />
+    <file path="$PROJECT_DIR$/../zebra/public/js/zax/actions/Action.js" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424128270069" ignored="false" />
+    <file path="/dummy.txt" changelist="9344d1e4-c382-4207-9090-a9152d141df8" time="1424275978700" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,46 +85,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="todos.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/todos.html">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="13" column="10" selection-start="546" selection-end="546" vertical-scroll-proportion="0.52094716">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bind.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/zax/actions/bind.js">
+      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/app/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="83" selection-start="3977" selection-end="3977" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="binding.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mocha/tests/binding.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="35" selection-start="6212" selection-end="6213" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Action.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/zax/actions/Action.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="122" selection-start="2015" selection-end="2015" vertical-scroll-proportion="0.44463667">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="todo.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/app/todo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="82" selection-start="424" selection-end="490" vertical-scroll-proportion="0.0">
+            <state line="17" column="8" selection-start="506" selection-end="576" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -105,6 +110,11 @@
       <setting name="OPEN_NEW_TAB" value="true" />
     </FindUsagesManager>
   </component>
+  <component name="FrameworkCommandLineHistory">
+    <commandsHistory>
+      <command text="git checkout" />
+    </commandsHistory>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -113,25 +123,28 @@
       <MyDateState />
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///dummy.txt" root0="SKIP_INSPECTION" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/app/widget.js" />
-        <option value="$PROJECT_DIR$/js/app/zax.js" />
-        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/_zax/attrs/value.js" />
+        <option value="$PROJECT_DIR$/index2.html" />
+        <option value="$PROJECT_DIR$/js/_zax/mv.js" />
+        <option value="$PROJECT_DIR$/todos.html" />
+        <option value="$PROJECT_DIR$/js/_zax/core/bindEvents.js" />
         <option value="$PROJECT_DIR$/widget.html" />
-        <option value="$PROJECT_DIR$/js/zax/attrs/z-each.js" />
-        <option value="$PROJECT_DIR$/js/zax/attrs/z-context.js" />
-        <option value="$PROJECT_DIR$/js/app/multi.js" />
-        <option value="$PROJECT_DIR$/js/zax/actions/parse.js" />
-        <option value="$PROJECT_DIR$/js/zax/attrs/z-if.js" />
-        <option value="$PROJECT_DIR$/miltibinding.html" />
-        <option value="$PROJECT_DIR$/js/main.js" />
-        <option value="$PROJECT_DIR$/mocha/setup.js" />
+        <option value="$PROJECT_DIR$/js/_zax/core/zWidget.js" />
         <option value="$PROJECT_DIR$/stylesheets/style.css" />
-        <option value="$PROJECT_DIR$/js/app/todo.js" />
-        <option value="$PROJECT_DIR$/js/zax/actions/bind.js" />
-        <option value="$PROJECT_DIR$/js/zax/actions/Action.js" />
+        <option value="$PROJECT_DIR$/js/_zax/actions/Action.js" />
+        <option value="$PROJECT_DIR$/js/app/index.js" />
+        <option value="$PROJECT_DIR$/js/_zax/attrs/z-context.js" />
+        <option value="$PROJECT_DIR$/js/_zax/attrs/z-if.js" />
+        <option value="$PROJECT_DIR$/js/_zax/core/bind.js" />
+        <option value="$PROJECT_DIR$/js/_zax/attrs/z-each.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/main.js" />
       </list>
     </option>
   </component>
@@ -197,38 +210,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mocha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dojo zax" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dojozax" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mocha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dojo zax" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dojozax" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -248,6 +229,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="zax" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dojo zax" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dojozax" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zax" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="attrs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -289,13 +292,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\dojozax\js\app" />
-      <recent name="C:\xampp\htdocs\dojozax" />
-      <recent name="C:\xampp\htdocs\dojozax\js\zax\attrs" />
-      <recent name="C:\xampp\htdocs\dojozax\js\zax\actions" />
-      <recent name="C:\xampp\htdocs\dojozax\mocha\tests" />
+      <recent name="C:\xampp\htdocs\dojozax\js\zax" />
+      <recent name="C:\xampp\htdocs\dojozax\js\_zax\core" />
+      <recent name="C:\xampp\htdocs\dojozax\js\_zax\attrs" />
+      <recent name="C:\xampp\htdocs\dojozax\js\_zax\actions" />
+      <recent name="C:\xampp\htdocs\dojozax\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\dojozax\js\_zax\core" />
       <recent name="C:\xampp\htdocs\dojozax\tests" />
       <recent name="C:\xampp\htdocs\dojozax\tests\doh" />
       <recent name="C:\xampp\htdocs\dojozax\util" />
@@ -306,8 +310,23 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" myUseAcceleration="nothing">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
     <configuration useDefault="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -359,11 +378,12 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26947704" sideWeight="0.67335564" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30843115" sideWeight="0.67335564" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34871244" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32852387" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -426,7 +446,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="*Changed, Filters argumets&#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="ZAX  2.1&#10;&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -455,63 +475,14 @@
     <MESSAGE value="tests&#10;" />
     <MESSAGE value="Tests&#10;&#10;" />
     <MESSAGE value="*Changed, Filters argumets&#10;&#10;" />
+    <MESSAGE value="ZAX  2.1&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/zax/attrs/z-if.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/multi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/zax.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/zax/utils/watch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/zax/utils/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mocha/tests/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mocha/setup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mocha/tests/vk.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="233" selection-end="233" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/miltibinding.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -519,35 +490,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/todos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="25" column="73" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.66344994" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/todo.js">
+    <entry file="file://$PROJECT_DIR$/widget.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="82" selection-start="424" selection-end="490" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="33" column="43" selection-start="1466" selection-end="1466" vertical-scroll-proportion="-16.896551" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/zax/actions/bind.js">
+    <entry file="file://$PROJECT_DIR$/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="83" selection-start="3977" selection-end="3977" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="14" column="29" selection-start="210" selection-end="210" vertical-scroll-proportion="0.35361654" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mocha/tests/binding.js">
+    <entry file="file://$PROJECT_DIR$/index2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="35" selection-start="6212" selection-end="6213" vertical-scroll-proportion="0.0">
+        <state line="52" column="4" selection-start="2339" selection-end="2450" vertical-scroll-proportion="-39.448277" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="8" selection-start="506" selection-end="576" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/zax/actions/Action.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="122" selection-start="2015" selection-end="2015" vertical-scroll-proportion="0.44463667">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="27" selection-start="217" selection-end="217" vertical-scroll-proportion="0.27784157">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="10" selection-start="546" selection-end="546" vertical-scroll-proportion="0.52094716">
           <folding />
         </state>
       </provider>

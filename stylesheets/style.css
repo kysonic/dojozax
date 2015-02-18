@@ -12,14 +12,14 @@ hr {
     width: 200px;
     border-style: dashed;
 }
-input {
+input:not(.dijitInputInner) {
     width: auto;
     height: 30px;
 }
 label{
     color: #5f6161;
 }
-select {
+select:not(.dijitInputInner) {
     width: auto;
     height: 44px;
 }
@@ -115,4 +115,8 @@ header {
 }
 .widget-load {
     background: red;
+}
+ul li {
+    padding: 10px;
+    border: 1px solid #ccc;
 }

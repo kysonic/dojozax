@@ -11,7 +11,7 @@ define([
          */
         return declare("bindEvents", null, {
             possibleEvent: [
-                'click','dblclick',
+                'dblclick','click',
                 'select','scroll','resize','play',
                 'playing','play','pause','mousewheel','mouseup',
                 'mouseover','mouseout','mousemove','mouseleave',
@@ -21,13 +21,27 @@ define([
             ],
             bindEvents: function(zaxNode){
                 var self = this;
-                array.forEach(this.possibleEvent,function(item){
+                /*array.forEach(this.possibleEvent,function(item){
                     query('*[z-'+item+']',zaxNode).forEach(function(node){
                         var f = self[domAttr.get(node,'z-'+item).replace('{{','').replace('}}','')];
-                        on(node,item,function(event){
+                        // Only is set to node z-bind
+                        if(node.data && node.data.zEvents){
+                            node.data.zEvents[item] = on(node,item,function(event){
+                                f.call(self,event);
+                            });
+                        }
+                    });
+                });*/
+                query('*[z-event]',zaxNode).forEach(function(node){
+                    var zEvent = domAttr.get(node,'z-event').split('#');
+                    var f = self[zEvent[0].replace('{{','').replace('}}','')];
+                    var eventName = zEvent[1] ? zEvent[1].replace('}}','') : 'click';
+                    if(-1==array.indexOf(self.possibleEvent,eventName)) console.error('Your event is not support...');
+                    if(node.bindData && node.bindData.zEvents){
+                        node.bindData.zEvents[eventName] = on(node,eventName,function(event){
                             f.call(self,event);
                         });
-                    });
+                    }
                 });
             }
         });
