@@ -8,7 +8,7 @@ exports.run =
                     driver.sleep(2000);
                     driver.findElement({id:'quick_email'}).sendKeys('soooyc@gmail.com');
                     driver.sleep(2000);
-                    driver.findElement({id:'quick_pass'}).sendKeys('kysonicpass89');
+                    driver.findElement({id:'quick_pass'}).sendKeys('*******');
                     driver.sleep(1000);
                     driver.findElement({id:'quick_login_button'}).click();
                     driver.sleep(2000);
